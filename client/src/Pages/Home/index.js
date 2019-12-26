@@ -1,11 +1,12 @@
 import React from "react";
-import Main from "../../Components/Main/Main";
-import Navbar from "../../Components/Navbar/Navbar";
-import Footing from "../../Components/Footer/Footer";
+import Main from "../../Components/Main/";
+import Navbar from "../../Components/Navbar/";
+import Footing from "../../Components/Footer/";
+import "./index.css";
 
 import { Layout } from 'antd';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Content } = Layout;
 
 function Home() {
 	return (

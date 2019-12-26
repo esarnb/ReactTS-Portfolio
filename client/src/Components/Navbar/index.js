@@ -1,8 +1,8 @@
 import React from "react";
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu} from 'antd';
 
 // const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const { Header} = Layout;
 
 function Navbar() {
 	return (
