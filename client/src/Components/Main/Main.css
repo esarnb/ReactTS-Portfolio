@@ -1,0 +1,19 @@
+@import "~antd/dist/antd.css";
+
+.Main {
+    background-color: hsl(195, 53%, 79%, 60%);
+    /* height: 100%; */
+    height: 100vh;
+}
+
+.Center {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    /* Figure out how to center it properly, if this below doesn't work */
+    transform: translateY(600%);
+}
+
+.Large {
+    font-size: xx-large;
+}
