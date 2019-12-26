@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import NotFound from "./components/NotFound";
-import Main from "./pages/Main";
+import NotFound from "../Components/NotFound/NotFound.js";
+import Main from "../Pages/Main/Main.js";
 
 function App() {
   return (
