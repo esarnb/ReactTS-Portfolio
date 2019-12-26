@@ -12,7 +12,10 @@ function Home() {
 	return (
 		<Layout>
 			<Header><Navbar /></Header>
-			<Content><Main /></Content>
+			<Content>
+				{/* <p> Hello World </p> */}
+				<Main />
+			</Content>
 			<Footer><Footing/></Footer>
 		</Layout>
 	);

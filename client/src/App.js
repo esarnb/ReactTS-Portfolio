@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import NotFound from "./Components/NotFound/";
-import Home from "./Pages/Home/";
+import NotFound from "./Components/NotFound";
+import Home from "./Pages/Home/index.js";
 import "./App.css";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <React.Fragment>
         {/* Depending on the webpage url, pick a page component to display */}
         <Switch> 
-          <Route path="/" component={Home} />
+          <Route exact path="/" component={Home} />
           <Route component={NotFound} />
         </Switch>
       </React.Fragment>
