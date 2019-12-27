@@ -11,7 +11,8 @@
     margin: auto;
     width: 50%;
     /* Figure out how to center it properly, if this below doesn't work */
-    transform: translateY(600%);
+    /* transform: translateY(600%); */
+    transform: translateY(50%);
 }
 
 .Large {
