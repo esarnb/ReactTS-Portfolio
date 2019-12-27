@@ -7,8 +7,9 @@ const { Header} = Layout;
 function Navbar() {
 	return (
         <Header className="Navbar">
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} style={{ lineHeight: '7.5vh' }} >
-            <Avatar className="logo"src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} style={{ lineHeight: '5vh' }} >
+            <Avatar className="logo"src="http://bestanimations.com/Nature/Fire/Flames/single-burning-flame-close-up-animated-gif-image.gif" />
+            <Menu.Item key="0" />
             <Menu.Item key="1">Home</Menu.Item>
             <Menu.Item key="2">Projects</Menu.Item>
             <Menu.Item key="3">ThreeJS</Menu.Item>
