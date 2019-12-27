@@ -2,3 +2,8 @@
     background-color: #001529;
     height: 7.5vh;
 }
+
+.Right {
+    justify-content: right;
+    justify-items: right;
+}
