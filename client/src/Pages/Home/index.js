@@ -20,14 +20,15 @@ class Home extends React.Component {
 
 	switchPage = (newPage) => {
 		this.setState({page: newPage})
+		console.log("Updating page, current state: ", this.state, " newpage: ", newPage);
 	}
 
 	determinePage = () => {
 		switch(this.state.page) {
-			case 2: return <Projects />
-			case 3: return <ThreeJS />
-			case 4: return <Discord />
-			case 5: return <Profile />
+			case "2": return <Projects />
+			case "3": return <ThreeJS />
+			case "4": return <Discord />
+			case "5": return <Profile />
 			default: return <Main />
 		}
 	}
