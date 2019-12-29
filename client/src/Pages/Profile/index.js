@@ -1,8 +1,9 @@
 import React from "react";
+import "./index.css";
 
-function Profile() {
+function Profile(props) {
 	return (
-		<div className="Profile">
+		<div className={`Profile pfp-${props.theme}`}>
 			Profile page
 		</div>
 	);

@@ -1,0 +1,15 @@
+@import "~antd/dist/antd.css";
+
+.Profile {
+    height: 91.5vh;
+}
+
+.pfp-light {
+    background-color: #CBF1F5;
+    color: black
+}
+
+.pfp-dark {
+    background-color: #1E2022;
+    color: white
+}

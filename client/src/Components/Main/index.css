@@ -3,8 +3,21 @@
 .Main {
     background-color: hsl(195, 53%, 79%, 60%);
     /* height: 100%; */
-    height: 92vh; /*91.5 between nav/footer*/
+    height: 91.5vh; /* between nav/footer */
+
 }
+
+
+.main-light {
+    background-color: #CBF1F5;
+    color: black
+}
+
+.main-dark {
+    background-color: #1E2022;
+    color: white
+}
+
 
 .Center {
     text-align: center;
@@ -18,4 +31,3 @@
 .Large {
     font-size: xx-large;
 }
-

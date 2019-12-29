@@ -1,0 +1,15 @@
+@import "~antd/dist/antd.css";
+
+.Projects {
+    height: 91.5vh;
+}
+
+.proj-light {
+    background-color: #CBF1F5;
+    color: black
+}
+
+.proj-dark {
+    background-color: #1E2022;
+    color: white
+}

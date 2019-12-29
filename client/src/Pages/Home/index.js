@@ -30,11 +30,11 @@ class Home extends React.Component {
 
 	determinePage = () => {
 		switch(this.state.page) {
-			case "2": return <Projects />
-			case "3": return <ThreeJS />
-			case "4": return <Discord />
-			case "5": return <Profile />
-			default: return <Main />
+			case "2": return <Projects theme={this.state.theme}/>
+			case "3": return <ThreeJS theme={this.state.theme}/>
+			case "4": return <Discord theme={this.state.theme}/>
+			case "5": return <Profile theme={this.state.theme}/>
+			default: return <Main theme={this.state.theme}/>
 		}
 	}
 

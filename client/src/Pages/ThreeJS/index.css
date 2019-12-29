@@ -1,0 +1,15 @@
+@import "~antd/dist/antd.css";
+
+.ThreeJS {
+    height: 91.5vh;
+}
+
+.three-light {
+    background-color: #CBF1F5;
+    color: black
+}
+
+.three-dark {
+    background-color: #1E2022;
+    color: white
+}

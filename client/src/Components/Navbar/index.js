@@ -13,9 +13,11 @@ class Navbar extends React.Component {
     changeTheme = (value) => { this.props.switchTheme(value) };
     
     render() {
+        let themeCSS = this.props.theme === "dark" ? "navdark Navbar" : "navlight  Navbar"
+
         return (
-            <Header className={ this.props.theme === "dark" ? "navdark Navbar" : "navlight  Navbar"}>
-                <Menu theme={this.props.theme} mode="horizontal" defaultSelectedKeys={['1']} style={{ lineHeight: '5vh' }} >
+            <Header className={ themeCSS }>
+                <Menu className={ themeCSS } theme={this.props.theme} mode="horizontal" defaultSelectedKeys={['1']} style={{ lineHeight: '5vh' }} >
                     <Avatar className="logo"src="http://bestanimations.com/Nature/Fire/Flames/single-burning-flame-close-up-animated-gif-image.gif" />
                     <Menu.Item key="Spacer" />
 

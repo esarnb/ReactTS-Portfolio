@@ -1,8 +1,9 @@
 import React from "react";
+import "./index.css";
 
-function ThreeJS() {
+function ThreeJS(props) {
 	return (
-		<div className="ThreeJS">
+		<div className={`ThreeJS three-${props.theme}`}>
 			ThreeJS page
 		</div>
 	);

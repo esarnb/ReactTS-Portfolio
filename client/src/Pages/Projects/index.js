@@ -1,8 +1,9 @@
 import React from "react";
+import "./index.css";
 
-function Projects() {
+function Projects(props) {
 	return (
-		<div className="Projects">
+		<div className={`Projects proj-${props.theme}`}>
 			Projects page
 		</div>
 	);
