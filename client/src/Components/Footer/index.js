@@ -1,9 +1,9 @@
 import React from "react";
 import "./index.css";
 
-function Footer() {
+function Footer(props) {
 	return (
-        <div className = "Footer"></div>
+        <div className = {props.theme == "dark" ? "footdark Footer" : "footlight  Footer"}></div>
     );
 }
 

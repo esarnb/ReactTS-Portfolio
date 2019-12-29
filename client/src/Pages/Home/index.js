@@ -17,12 +17,15 @@ class Home extends React.Component {
 
 		// Instead of spreading (...obj) an object by copy, just reference the passed in object.
 		// this.state = { page: 1, profile: {...this.props.profile} };
-		this.state = { page: 1, profile: this.props.profile }; 
+		this.state = { page: 1, profile: this.props.profile, theme: "dark" }; 
 	}
 
 	switchPage = (newPage) => {
 		this.setState({page: newPage})
-		console.log("Updating page, current state: ", this.state, " newpage: ", newPage);
+	}
+
+	switchTheme = (value) => {
+		this.setState({theme: value ? 'dark' : 'light'})
 	}
 
 	determinePage = () => {
@@ -38,9 +41,9 @@ class Home extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Navbar page={this.state.page} updatePage={this.switchPage}/>
+				<Navbar page={this.state.page} theme={this.state.theme} switchTheme={this.switchTheme} updatePage={this.switchPage}/>
 				{this.determinePage()}
-				<Footing/>
+				<Footing theme={this.state.theme} />
 			</React.Fragment>
 		)
 	};

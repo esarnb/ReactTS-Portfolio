@@ -1,4 +1,14 @@
 .Navbar {
-    background-color: #001529 !important;
     height: 5.5vh !important;
+    width: 100% !important;
+}
+
+.navdark {
+    background-color: #001529 !important;
+    color: white;
+}
+
+.navlight {
+    background-color: white !important;
+    color: #001529
 }
