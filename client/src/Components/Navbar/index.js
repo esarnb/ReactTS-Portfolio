@@ -14,7 +14,7 @@ class Navbar extends React.Component {
     
     render() {
         return (
-            <Header className={ this.props.theme == "dark" ? "navdark Navbar" : "navlight  Navbar"}>
+            <Header className={ this.props.theme === "dark" ? "navdark Navbar" : "navlight  Navbar"}>
                 <Menu theme={this.props.theme} mode="horizontal" defaultSelectedKeys={['1']} style={{ lineHeight: '5vh' }} >
                     <Avatar className="logo"src="http://bestanimations.com/Nature/Fire/Flames/single-burning-flame-close-up-animated-gif-image.gif" />
                     <Menu.Item key="Spacer" />
@@ -24,7 +24,7 @@ class Navbar extends React.Component {
                     <Menu.Item key="4" onClick={(res) => this.props.updatePage(res.key)}> Discord </Menu.Item>
                     <Menu.Item key="5" onClick={(res) => this.props.updatePage(res.key)}> Profile </Menu.Item>
                     <Menu.Item key="Spacer" />
-                    <Switch checked={this.props.theme == 'dark'} onChange={this.changeTheme} checkedChildren="dark" unCheckedChildren="light" />
+                    <Switch checked={this.props.theme === 'dark'} onChange={this.changeTheme} checkedChildren="dark" unCheckedChildren="light" />
                 </Menu>
             </Header>
         );

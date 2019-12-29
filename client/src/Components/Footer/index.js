@@ -3,7 +3,7 @@ import "./index.css";
 
 function Footer(props) {
 	return (
-        <div className = {props.theme == "dark" ? "footdark Footer" : "footlight  Footer"}></div>
+        <div className = {props.theme === "dark" ? "footdark Footer" : "footlight  Footer"}></div>
     );
 }
 
