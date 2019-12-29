@@ -5,10 +5,15 @@
 
 .navdark {
     background-color: #001529 !important;
-    color: white;
 }
 
 .navlight {
     background-color: white !important;
-    color: #001529
+}
+
+.Switcher {
+    justify-content: right !important;
+    position: absolute !important;
+    right: 1vh !important;
+    top: 1vh;
 }
