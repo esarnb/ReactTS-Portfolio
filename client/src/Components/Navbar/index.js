@@ -4,7 +4,7 @@ import "./index.css"
 // const { SubMenu } = Menu;
 const { Header} = Layout;
 
-function Navbar() {
+function Navbar(props) {
     function test(obj) {
         console.log(obj.key);
         
