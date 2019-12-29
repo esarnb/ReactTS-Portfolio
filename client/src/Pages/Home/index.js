@@ -14,8 +14,10 @@ import "./index.css";
 class Home extends React.Component {
 	constructor(props) {
 		super(props);
-		// this.state = { page: 1, test: this.props.test };
-		this.state = { page: 1, test: this.props.test };
+
+		// Instead of spreading (...obj) an object by copy, just reference the passed in object.
+		// this.state = { page: 1, profile: {...this.props.profile} };
+		this.state = { page: 1, profile: this.props.profile }; 
 	}
 
 	switchPage = (newPage) => {

@@ -7,7 +7,12 @@ import "./App.css";
 
 class App extends React.Component {
   state = {
-    test: 1
+    test: 1,
+    user: {
+      name: "Person",
+      email: "sr@gmail.com",
+      avatar: "some.png"
+    }
   }
 
   render() {
@@ -15,7 +20,9 @@ class App extends React.Component {
       <Router>
       <React.Fragment>
         <Switch> 
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" render={props => (<Home {...props} profile={this.state.user}/>)} />
+          {/* <Route exact path="/" render={props => (<Home {...props} test1={this.state.test}/>)} /> */}
+          {/* <Route exact path="/" component={<Home test={this.state.test}/> */}
           <Route component={NotFound} />
         </Switch>
       </React.Fragment>
