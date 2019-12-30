@@ -8,7 +8,7 @@
 }
 
 
-.main-light {
+.main-light{
     background-color: #CBF1F5;
     color: black
 }
@@ -16,6 +16,10 @@
 .main-dark {
     background-color: #1E2022;
     color: white
+}
+
+.cardBG {
+    background-color: red;
 }
 
 

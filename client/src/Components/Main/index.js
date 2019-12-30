@@ -7,7 +7,7 @@ function Main(props) {
 		<div className={`Main main-${props.theme}`}>
             <p className="Center Large">Welcome Home.</p>
 			<br /><br /><br />
-			<Cards list={[
+			<Cards bg="#1E2022" list={[
 				{
 					key:"test",
 					styleWidth: 300,

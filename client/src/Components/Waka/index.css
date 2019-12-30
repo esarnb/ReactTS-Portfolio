@@ -1,0 +1,7 @@
+@import "~antd/dist/antd.css";
+
+.Waka {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+}
