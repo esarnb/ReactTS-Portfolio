@@ -1,8 +1,9 @@
 import React from "react";
 
-function Frame() {
+function Frame(props) {
 	return (
-		<div className="">
+		<div className={`Frame fr-${props.theme}`}>
+
 			
 		</div>
 	);
