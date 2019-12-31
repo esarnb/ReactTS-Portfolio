@@ -4,7 +4,7 @@ function Frame(props) {
 	return (
 		<div className={`Frame fr-${props.theme}`}>
 
-			
+			{/*  */}
 		</div>
 	);
 }
