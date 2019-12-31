@@ -2,7 +2,10 @@ import React from "react";
 
 function Waka(props) {
 	return (
-		<figure className="Waka" style={{width: "60%"}}><embed src="https://wakatime.com/share/@Esarnb/14b0ec8e-03c4-46f3-a429-a1d9d9cee067.svg"></embed></figure>
+		<div className="Waka">
+			<figure style={{width: "100vh", float: "left", marginRight: "2vh"}}><embed src="https://wakatime.com/share/@Esarnb/14b0ec8e-03c4-46f3-a429-a1d9d9cee067.svg"></embed></figure>
+			<figure style={{width: "100vh", float: "left"}}><embed src="https://wakatime.com/share/@Esarnb/9e0a7158-647f-43f5-b178-582c0c4ac105.svg"></embed></figure>
+		</div>
 	);
 }
 
