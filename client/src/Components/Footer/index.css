@@ -6,11 +6,26 @@
 }
 
 .footdark {
-    background-color: #001529 !important;
-    color: white;
+    background-color: #001529;
+    color: rgb(115, 134, 173) !important; /*Makes children color codes white*/
 }
 
 .footlight {
-    background-color: rgb(155, 221, 223) !important;
+    background-color: rgb(155, 221, 223);
     color: #001529;
+}
+
+.sep {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.sepdark {
+    background-color: #001529 !important;
+    border-color: #001529 !important;
+}
+
+.seplight {
+    background-color: rgb(155, 221, 223) !important;
+    border-color: rgb(155, 221, 223) !important;
 }

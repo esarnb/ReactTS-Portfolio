@@ -1,9 +1,19 @@
 import React from "react";
+import { Breadcrumb, Tag } from 'antd';
 import "./index.css";
 
 function Footer(props) {
+    let classes = props.theme === "dark" ? "footdark Footer" : "footlight  Footer";
+    let sep =  <Tag color="purple" className={props.theme === "dark" ? "sepdark sep" : "seplight sep"}>></Tag>
 	return (
-        <div className = {props.theme === "dark" ? "footdark Footer" : "footlight  Footer"}></div>
+        <div >
+            <Breadcrumb className = {classes} separator={sep}>
+                <Breadcrumb.Item className={classes}>Home</Breadcrumb.Item>
+                <Breadcrumb.Item> <a href="" className={classes}>Application Center</a> </Breadcrumb.Item>
+                <Breadcrumb.Item> <a href="" className={classes}>Application List</a> </Breadcrumb.Item>
+                <Breadcrumb.Item className={classes}>An Application</Breadcrumb.Item>
+            </Breadcrumb>
+        </div>
     );
 }
 
