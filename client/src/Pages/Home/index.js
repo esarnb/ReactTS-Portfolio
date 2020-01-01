@@ -17,7 +17,9 @@ class Home extends React.Component {
 
 		// Instead of spreading (...obj) an object by copy, just reference the passed in object.
 		// this.state = { page: 1, profile: {...this.props.profile} };
-		this.state = { page: 1, profile: this.props.profile, theme: "dark" }; 
+		this.state = { page: 1, profile: this.props.profile, theme: "dark",
+			crumbs: ["Location: "]
+		}; 
 	}
 
 	switchPage = (newPage) => {
@@ -30,20 +32,34 @@ class Home extends React.Component {
 
 	determinePage = () => {
 		switch(this.state.page) {
-			case "2": return <Projects theme={this.state.theme}/>
-			case "3": return <ThreeJS theme={this.state.theme}/>
-			case "4": return <Discord theme={this.state.theme}/>
-			case "5": return <Profile theme={this.state.theme}/>
-			default: return <Main theme={this.state.theme}/>
+			case "2": return <Projects theme={this.state.theme} setCrumbs={this.setCrumbs}/>
+			case "3": return <ThreeJS theme={this.state.theme} setCrumbs={this.setCrumbs}/>
+			case "4": return <Discord theme={this.state.theme} setCrumbs={this.setCrumbs}/>
+			case "5": return <Profile theme={this.state.theme} setCrumbs={this.setCrumbs}/>
+			default: return <Main theme={this.state.theme} />
 		}
 	}
 
+	componentWillUnmount() {
+		this.setCrumbs("Home", 1)
+	}
+	
+	componentDidMount() {
+		this.setCrumbs("Home", 1)
+	}
+
+	setCrumbs = (elem, index) => {
+		let arr = this.state.crumbs;
+		arr[index] = elem;
+		this.setState({crumbs: arr});
+	}
+	
 	render() {
 		return (
 			<React.Fragment>
 				<Navbar page={this.state.page} theme={this.state.theme} switchTheme={this.switchTheme} updatePage={this.switchPage}/>
 				{this.determinePage()}
-				<Footing theme={this.state.theme} />
+				<Footing theme={this.state.theme} crumbs={this.state.crumbs}/>
 			</React.Fragment>
 		)
 	};
