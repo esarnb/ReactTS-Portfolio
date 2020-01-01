@@ -1,7 +1,8 @@
 @import "~antd/dist/antd.css";
 
 .Profile {
-    height: 91.5vh;
+    height: 100%;
+    overflow: auto;
 }
 
 .pfp-light {
