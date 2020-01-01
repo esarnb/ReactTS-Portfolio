@@ -18,7 +18,7 @@ class Navbar extends React.Component {
         return (
             <Header className={ themeCSS }>
                 <Menu className={ themeCSS } theme={this.props.theme} mode="horizontal" defaultSelectedKeys={['1']} style={{ lineHeight: '5vh' }} >
-                    <Avatar className="logo"src="http://bestanimations.com/Nature/Fire/Flames/single-burning-flame-close-up-animated-gif-image.gif" />
+                    <Avatar className="logo"src="https://bestanimations.com/Nature/Fire/Flames/single-burning-flame-close-up-animated-gif-image.gif" />
                     <Menu.Item key="Spacer" />
 
                     <Menu.Item key="1" onClick={(res) => this.props.updatePage(res.key)}> Home </Menu.Item>
