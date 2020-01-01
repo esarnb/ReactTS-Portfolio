@@ -10,8 +10,8 @@ function Cards(props) {
 		<div className="Cards" style={{ background: props.bg, padding: '30px' }}>
 			<Row gutter={8} style={{ background: props.bg, justifyContent: "center", textAlign: "center", width: "auto"}}>
 				{/* {props.list.length ? props.list : <Card key="card-placehold" title="title" bordered={false}>placeholder</Card>} */}
-				{props.list.map((obj,index) => { return <Col style={{ background: props.bg}} span={3} offset={3}>
-					<Card key={`${obj.key}-${index}`} style={{ width: obj.styleWidth }} 
+				{props.list.map((obj,index) => { return <Col style={{ background: props.bg}} span={4} offset={3}>
+					<Card key={`${obj.key}-${index}`} style={{ width: obj.styleWidth, margin: "5px" }} 
 						cover={ <img alt={obj.cover.alt} src={obj.cover.src}/> }
 						actions={[ <Icon type="setting" key="setting" /> ]}>
 						<Meta avatar={<Avatar src={obj.avatar} />} 
