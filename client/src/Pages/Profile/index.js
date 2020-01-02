@@ -36,16 +36,16 @@ class Profile extends React.Component {
 
 	setupAcc = () => {
 		this.props.setProfileHome({
-			name: "User A",
+			name: "John Doe",
 			avatar: "image.png",
-			notes: [],
+			notes: ["Buy a Tesla", "Cook Biryani", "Wash the dog"],
 		})
 	}
 
 	render() {
 		return (
 			<div className={`Profile pfp-${this.props.theme}`}>
-				{this.props.profile ? <User /> : <Guest setupAcc={this.setupAcc}/>}
+				{this.props.profile ? <User theme={this.props.theme} userInfo={this.props.profile}/> : <Guest theme={this.props.theme} setupAcc={this.setupAcc}/>}
 			</div>
 		);
 	}

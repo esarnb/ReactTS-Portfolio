@@ -1,13 +1,19 @@
 @import "~antd/dist/antd.css";
 
-.Frame {
+.User {
 
 }
 
-.f-light {
-
+.user-light {
+    background-color: #CBF1F5;
+    color: black !important;
 }
 
-.f-dark {
+.user-dark {
+    background-color: #1E2022;
+    color: #CBF1F5;
+}
 
+.text {
+    color: rgb(177, 0, 153);
 }
