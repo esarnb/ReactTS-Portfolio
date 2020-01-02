@@ -8,12 +8,12 @@ import "./App.css";
 class App extends React.Component {
   state = {
     test: 1,
-    profile: {}
+    profile: null
   }
 
   setProfile = (user) => {
     this.setState({profile: user})
-    console.log(`Ran setup on ${user}`);
+    console.log(`Ran setup on ${JSON.stringify(user)}`);
     
   }
 
@@ -31,7 +31,7 @@ class App extends React.Component {
       <Router>
       <React.Fragment>
         <Switch> 
-          <Route exact path="/" render={props => (<Home {...props} profile={this.state.user} setProfileRoot={this.setProfile}/>)} />
+          <Route exact path="/" render={props => (<Home {...props} profile={this.state.profile} setProfileRoot={this.setProfile}/>)} />
           {/* <Route exact path="/" render={props => (<Home {...props} test1={this.state.test}/>)} /> */}
           {/* <Route exact path="/" component={<Home test={this.state.test}/> */}
           <Route component={NotFound} />
