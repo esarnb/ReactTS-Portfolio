@@ -8,19 +8,30 @@ import "./App.css";
 class App extends React.Component {
   state = {
     test: 1,
-    user: {
-      name: "Person",
-      email: "sr@gmail.com",
-      avatar: "some.png"
-    }
+    profile: {}
   }
 
+  setProfile = (user) => {
+    this.setState({profile: user})
+    console.log(`Ran setup on ${user}`);
+    
+  }
+
+  componentWillMount() {
+    //Check if there is a cookie stored for user login
+    
+    // if so, auto-retrieve information to put into profile object
+
+    // if not, keep profile to empty object
+
+  }
+  
   render() {
     return (  
       <Router>
       <React.Fragment>
         <Switch> 
-          <Route exact path="/" render={props => (<Home {...props} profile={this.state.user}/>)} />
+          <Route exact path="/" render={props => (<Home {...props} profile={this.state.user} setProfileRoot={this.setProfile}/>)} />
           {/* <Route exact path="/" render={props => (<Home {...props} test1={this.state.test}/>)} /> */}
           {/* <Route exact path="/" component={<Home test={this.state.test}/> */}
           <Route component={NotFound} />

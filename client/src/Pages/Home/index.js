@@ -15,10 +15,9 @@ import "./index.css";
 class Home extends React.Component {
 	constructor(props) {
 		super(props);
-
-		// Instead of spreading (...obj) an object by copy, just reference the passed in object.
-		// this.state = { page: 1, profile: {...this.props.profile} };
-		this.state = { page: 1, profile: this.props.profile, theme: "dark",
+		this.state = { 
+			page: 1,
+			theme: "dark",
 			crumbs: ["Location: "]
 		}; 
 	}
@@ -37,7 +36,7 @@ class Home extends React.Component {
 			case "3": return <ThreeJS theme={this.state.theme} setCrumbs={this.setCrumbs}/>
 			case "4": return <Discord theme={this.state.theme} setCrumbs={this.setCrumbs}/>
 			case "5": return <Code theme={this.state.theme} setCrumbs={this.setCrumbs}/>
-			case "6": return <Profile theme={this.state.theme} setCrumbs={this.setCrumbs}/>
+			case "6": return <Profile profile={this.props.profile} setProfileHome={this.props.setProfileRoot} theme={this.state.theme} setCrumbs={this.setCrumbs}/>
 			default: return <Main theme={this.state.theme} />
 		}
 	}
