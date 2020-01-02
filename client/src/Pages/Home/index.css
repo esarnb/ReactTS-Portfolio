@@ -1,1 +1,6 @@
 @import "~antd/dist/antd.css";
+
+.Home {
+    height: 91.5vh;
+    overflow: auto;
+}

@@ -2,6 +2,7 @@
 
 .Projects {
     height: 91.5vh;
+    overflow: auto;
 }
 
 .proj-light {
