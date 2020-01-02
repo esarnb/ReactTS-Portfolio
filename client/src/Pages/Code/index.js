@@ -3,7 +3,7 @@ import Waka from "../../Components/Waka"
 import "./index.css";
 
 
-class Profile extends React.Component {
+class Code extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -13,16 +13,16 @@ class Profile extends React.Component {
 	}
 	
 	componentDidMount() {
-		this.props.setCrumbs("Profile", 1)
+		this.props.setCrumbs("Code", 1)
 	}
 
 	render() {
 		return (
-			<div className={`Profile pfp-${this.props.theme}`}>
-
+			<div className={`Code cwk-${this.props.theme}`}>
+				<Waka />
 			</div>
 		);
 	}
 }
 
-export default Profile;
+export default Code;

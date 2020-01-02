@@ -1,0 +1,16 @@
+@import "~antd/dist/antd.css";
+
+.Code {
+    height: 91.5vh;
+    overflow: auto;
+}
+
+.cwk-light {
+    background-color: #CBF1F5;
+    color: black
+}
+
+.cwk-dark {
+    background-color: #1E2022;
+    color: white
+}

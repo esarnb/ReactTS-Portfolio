@@ -8,6 +8,7 @@ import Projects from "../../Pages/Projects/";
 import ThreeJS from "../../Pages/ThreeJS/";
 import Discord from "../../Pages/Discord/";
 import Profile from "../../Pages/Profile/";
+import Code from "../../Pages/Code/";
 
 import "./index.css";
 
@@ -35,7 +36,8 @@ class Home extends React.Component {
 			case "2": return <Projects theme={this.state.theme} setCrumbs={this.setCrumbs}/>
 			case "3": return <ThreeJS theme={this.state.theme} setCrumbs={this.setCrumbs}/>
 			case "4": return <Discord theme={this.state.theme} setCrumbs={this.setCrumbs}/>
-			case "5": return <Profile theme={this.state.theme} setCrumbs={this.setCrumbs}/>
+			case "5": return <Code theme={this.state.theme} setCrumbs={this.setCrumbs}/>
+			case "6": return <Profile theme={this.state.theme} setCrumbs={this.setCrumbs}/>
 			default: return <Main theme={this.state.theme} />
 		}
 	}

@@ -25,7 +25,8 @@ class Navbar extends React.Component {
                     <Menu.Item key="2" onClick={(res) => this.props.updatePage(res.key)}> Projects </Menu.Item>
                     <Menu.Item key="3" onClick={(res) => this.props.updatePage(res.key)}> ThreeJS </Menu.Item>
                     <Menu.Item key="4" onClick={(res) => this.props.updatePage(res.key)}> Discord </Menu.Item>
-                    <Menu.Item key="5" onClick={(res) => this.props.updatePage(res.key)}> Profile </Menu.Item>
+                    <Menu.Item key="5" onClick={(res) => this.props.updatePage(res.key)}> Code </Menu.Item>
+                    <Menu.Item key="6" onClick={(res) => this.props.updatePage(res.key)}> Profile </Menu.Item>
                     
                 </Menu>
                     <Switch className="Switcher" checked={this.props.theme === 'dark'} onChange={this.changeTheme} checkedChildren="dark" unCheckedChildren="light" />

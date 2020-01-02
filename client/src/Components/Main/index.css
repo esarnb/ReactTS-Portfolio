@@ -8,6 +8,21 @@
 
 }
 
+.Center {
+    color: #CBF1F5;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    padding-left: 4%;
+    margin-top: 3%;
+    margin-bottom: -4%;
+    /* transform: translateY(50%); */
+}
+
+.Large {
+    font-size: xx-large;
+}
+
 .main-light{
     background-color: #CBF1F5;
     color: black
@@ -16,22 +31,4 @@
 .main-dark {
     background-color: #1E2022;
     color: white
-}
-
-.cardBG {
-    background-color: red;
-}
-
-
-.Center {
-    text-align: center;
-    margin: auto;
-    width: 50%;
-    /* Figure out how to center it properly, if this below doesn't work */
-    /* transform: translateY(600%); */
-    transform: translateY(50%);
-}
-
-.Large {
-    font-size: xx-large;
 }
