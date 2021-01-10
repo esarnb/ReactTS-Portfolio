@@ -1,4 +1,5 @@
-import React, {Fragment} from "react"
+import React, {Fragment} from "react";
+import Counter from "../../components/Counter";
 import "./About.css";
 
 export default function About() {
@@ -6,6 +7,8 @@ export default function About() {
     <Fragment>
       <h1 className="page-title text-center">About</h1>
       <br /> <br /> <br />
+      <div className="floatRight"><Counter /></div>
+
     </Fragment>
   )
 }

@@ -1,7 +1,7 @@
 import React, {Fragment} from "react"
 import { useSelector } from "react-redux";
+import { Card, Col, Row, Skeleton, Empty } from 'antd';
 
-import Counter from "../../components/Counter";
 import "./Home.css";
 
 function Home() {
@@ -11,8 +11,18 @@ function Home() {
     <Fragment>
       <h1 className="page-title text-center">{loggedIn ? "Welcome User" : "Home"}</h1>
       <br />
-      <div className="bottom-counter"><Counter /></div>
-
+      <Row>
+        <Col span={8} key={`Git-Cols`}>
+          <Card key={`Git-Repos`}
+            style={{ margin: 8 }}
+            type="inner"
+            title="title"
+            extra={<a href="x">Repo</a>}
+          >
+            desc
+          </Card>
+        </Col>
+      </Row>
     </Fragment>
   )
 }
