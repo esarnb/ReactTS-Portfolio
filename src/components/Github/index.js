@@ -3,8 +3,8 @@ import { Card, Col, Row } from 'antd';
 import axios from "axios";
 import dayjs from "dayjs";
 
-import Counter from "../../components/Counter";
-import "./Projects.css";
+import Counter from "../Counter";
+import "./Github.css";
 
 const relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
