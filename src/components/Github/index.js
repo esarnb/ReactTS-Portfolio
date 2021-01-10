@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import { Card, Col, Row } from 'antd';
+import { Card, Col, Row, Skeleton, Empty } from 'antd';
 import axios from "axios";
 import dayjs from "dayjs";
-
-import Counter from "../Counter";
 import "./Github.css";
 
 const relativeTime = require('dayjs/plugin/relativeTime')
@@ -28,7 +26,6 @@ export default class Projects extends Component {
 
   render() {
     let { loading, userdata } = this.state;
-    console.log(userdata);
     return (
       <Fragment>
         
@@ -36,9 +33,12 @@ export default class Projects extends Component {
           <h1 className="page-title">Github Repositories</h1>
         </div>
 
-        {loading ? <div>Loading...</div> : (
+        {loading ? <div>
+          Loading Repositories... <br />
+          <Skeleton active/> <Skeleton active/> <Skeleton active/> <Skeleton active/> 
+        </div> : (
           <Row>
-            {userdata ? userdata.map((item, i) => {
+            {userdata && userdata.length ? userdata.map((item, i) => {
               return <Col span={8} key={`Git-Cols-${i}`}>
                 <Card key={`Git-Repos-${i}`}
                   style={{ margin: 8 }}
@@ -52,11 +52,9 @@ export default class Projects extends Component {
                   <p className="repo-update">Updated: {dayjs().from(item.lastRepoUpdate, true)} ago</p>
                 </Card>
               </Col>
-            }) : null}
+            }) : <div className="flex-center"><Empty image={Empty.PRESENTED_IMAGE_SIMPLE} /></div>}
           </Row>
         )}
-
-        <div className="bottom-counter"><Counter /></div>
 
       </Fragment>
     )
