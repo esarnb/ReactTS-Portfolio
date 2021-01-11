@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import Counter from "../Counter/Counter";
+import Counter from "../../components/Counter/Counter";
 import "./Redux.css";
 
 export default function Redux() {

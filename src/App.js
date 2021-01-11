@@ -4,9 +4,9 @@ import { Layout  } from 'antd';
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import Navbar from "./components/Navbar/Navbar";
-import Github from "./components/Github/Github";
-import ThreeJS from "./components/ThreeJS/ThreeJS";
-import Redux from "./components/Redux/Redux";
+import Github from "./pages/Github/Github";
+import ThreeJS from "./pages/ThreeJS/ThreeJS";
+import Redux from "./pages/Redux/Redux";
 import "./styles.css";
 // const { Footer } = Layout;
 
