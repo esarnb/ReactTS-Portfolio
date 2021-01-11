@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Menu } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { AppstoreOutlined } from '@ant-design/icons';
+import { HomeOutlined, GithubOutlined, GlobalOutlined, LaptopOutlined } from '@ant-design/icons';
 import Login from "../Login/Login";
 import Counter from "../Counter/Counter";
 import "./Navbar.css";
@@ -22,10 +22,10 @@ export default class Navbar extends Component {
     const { current } = this.state;
     return (
       <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal" >
-        <Menu.Item key="home" icon={<AppstoreOutlined />}> <NavLink to="/">Home</NavLink> </Menu.Item>
-        <Menu.Item key="Github" icon={<AppstoreOutlined />}> <NavLink to="/github">Github</NavLink> </Menu.Item>
-        <Menu.Item key="ThreeJS" icon={<AppstoreOutlined />}> <NavLink to="/threejs">ThreeJS</NavLink> </Menu.Item>
-        <Menu.Item key="Redux" icon={<AppstoreOutlined />}> <NavLink to="/redux">Redux</NavLink> </Menu.Item>
+        <Menu.Item key="home" icon={<HomeOutlined />}> <NavLink to="/">Home</NavLink> </Menu.Item>
+        <Menu.Item key="github" icon={<GithubOutlined />}> <NavLink to="/github">Github</NavLink> </Menu.Item>
+        <Menu.Item key="threejs" icon={<GlobalOutlined />}> <NavLink to="/threejs">ThreeJS</NavLink> </Menu.Item>
+        <Menu.Item key="redux" icon={<LaptopOutlined />}> <NavLink to="/redux">Redux</NavLink> </Menu.Item>
         
         <div id="login-btn-nav" className="floatRight" ><Login /></div>
         <div className="floatRight"><Counter /></div>
