@@ -2,7 +2,7 @@ import React from "react"
 import { Button } from 'antd';
 import {useDispatch, useSelector} from "react-redux";
 import {increment, decrement} from "../../store/actions";
-import "./counter.css";
+import "./Counter.css";
 
 function Counter() {
   const counts = useSelector(state => state.counter);

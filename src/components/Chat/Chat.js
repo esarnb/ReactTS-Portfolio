@@ -1,11 +1,11 @@
 import React, {Fragment} from "react";
-import Counter from "../../components/Counter";
-import "./About.css";
+import Counter from "../Counter/Counter";
+import "./Chat.css";
 
-export default function About() {
+export default function Chat() {
   return (
     <Fragment>
-      <h1 className="page-title text-center">About</h1>
+      <h1 className="page-title text-center">Chat</h1>
       <br /> <br /> <br />
       <div className="floatRight"><Counter /></div>
 

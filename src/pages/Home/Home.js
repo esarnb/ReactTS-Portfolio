@@ -1,6 +1,6 @@
 import React, {Fragment} from "react"
 import { useSelector } from "react-redux";
-import { Card, Col, Row, Skeleton, Empty } from 'antd';
+// import { Card, Col, Row } from 'antd';
 
 import "./Home.css";
 
@@ -11,7 +11,7 @@ function Home() {
     <Fragment>
       <h1 className="page-title text-center">{loggedIn ? "Welcome User" : "Home"}</h1>
       <br />
-      <Row>
+      {/* <Row>
         <Col span={8} key={`Git-Cols`}>
           <Card key={`Git-Repos`}
             style={{ margin: 8 }}
@@ -22,7 +22,7 @@ function Home() {
             desc
           </Card>
         </Col>
-      </Row>
+      </Row> */}
     </Fragment>
   )
 }

@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { Menu } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { AppstoreOutlined } from '@ant-design/icons';
-import Login from "../../components/Login";
-import Counter from "../../components/Counter";
+import Login from "../Login/Login";
+import Counter from "../Counter/Counter";
 import "./Navbar.css";
 
 // const { SubMenu } = Menu;
@@ -23,8 +23,9 @@ export default class Navbar extends Component {
     return (
       <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal" >
         <Menu.Item key="home" icon={<AppstoreOutlined />}> <NavLink to="/">Home</NavLink> </Menu.Item>
-        <Menu.Item key="projects" icon={<AppstoreOutlined />}> <NavLink to="/projects">Projects</NavLink> </Menu.Item>
-        <Menu.Item key="about" icon={<AppstoreOutlined />}> <NavLink to="/about">About</NavLink> </Menu.Item>
+        <Menu.Item key="Github" icon={<AppstoreOutlined />}> <NavLink to="/github">Github</NavLink> </Menu.Item>
+        <Menu.Item key="ThreeJS" icon={<AppstoreOutlined />}> <NavLink to="/threejs">ThreeJS</NavLink> </Menu.Item>
+        <Menu.Item key="Chat" icon={<AppstoreOutlined />}> <NavLink to="/chat">Chat</NavLink> </Menu.Item>
         
         <div id="login-btn-nav" className="floatRight" ><Login /></div>
         <div className="floatRight"><Counter /></div>
