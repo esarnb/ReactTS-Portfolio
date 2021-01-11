@@ -4,6 +4,9 @@ import { Layout  } from 'antd';
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import Navbar from "./components/Navbar/Navbar";
+import Github from "./components/Github/Github";
+import ThreeJS from "./components/ThreeJS/ThreeJS";
+import Redux from "./components/Redux/Redux";
 import "./styles.css";
 // const { Footer } = Layout;
 
@@ -16,6 +19,9 @@ function App() {
 
           <Switch>
             <Route exact path="/" component={Home}/>
+            <Route exact path="/github" component={Github}/>
+            <Route exact path="/threejs" component={ThreeJS}/>
+            <Route exact path="/redux" component={Redux}/>
             <Route path="/" component={NotFound}/>
           </Switch>
           {/* <Footer id="footer">esarnb</Footer> */}

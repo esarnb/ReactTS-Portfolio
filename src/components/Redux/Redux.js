@@ -1,11 +1,11 @@
 import React, {Fragment} from "react";
 import Counter from "../Counter/Counter";
-import "./Chat.css";
+import "./Redux.css";
 
-export default function Chat() {
+export default function Redux() {
   return (
     <Fragment>
-      <h1 className="page-title text-center">Chat</h1>
+      <h1 className="page-title text-center">Redux</h1>
       <br /> <br /> <br />
       <div className="floatRight"><Counter /></div>
 

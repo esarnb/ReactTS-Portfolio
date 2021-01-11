@@ -75,6 +75,10 @@ table {
 	margin: auto;
 }
 
+.div-center {
+	margin: 0 auto;
+}
+
 .page-title {
     font-size: xx-large;
 	margin-top: 20px;

@@ -25,7 +25,7 @@ export default class Navbar extends Component {
         <Menu.Item key="home" icon={<AppstoreOutlined />}> <NavLink to="/">Home</NavLink> </Menu.Item>
         <Menu.Item key="Github" icon={<AppstoreOutlined />}> <NavLink to="/github">Github</NavLink> </Menu.Item>
         <Menu.Item key="ThreeJS" icon={<AppstoreOutlined />}> <NavLink to="/threejs">ThreeJS</NavLink> </Menu.Item>
-        <Menu.Item key="Chat" icon={<AppstoreOutlined />}> <NavLink to="/chat">Chat</NavLink> </Menu.Item>
+        <Menu.Item key="Redux" icon={<AppstoreOutlined />}> <NavLink to="/redux">Redux</NavLink> </Menu.Item>
         
         <div id="login-btn-nav" className="floatRight" ><Login /></div>
         <div className="floatRight"><Counter /></div>
