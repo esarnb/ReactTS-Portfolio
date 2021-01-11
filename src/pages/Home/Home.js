@@ -11,15 +11,38 @@ function Home() {
     <Fragment>
       <h1 className="page-title text-center">{loggedIn ? "Welcome User" : "Home"}</h1>
       <br />
-      <Row>
-        <Col span={8} key={`Git-Cols`}>
-          <Card key={`Git-Repos`}
-            style={{ margin: 8 }}
-            type="inner"
-            title="title"
-            extra={<a href="x">Repo</a>}
-          >
-            desc
+      <Row className="home-rCards" justify="center">
+        <Col className="home-cCards" xs={24} sm={20} md={12} lg={8} span={8}>
+          <Card title="Card title" bordered={false}>
+            Card content
+          </Card>
+        </Col>
+        <Col className="home-cCards" xs={24} sm={20} md={12} lg={8} span={8}>
+          <Card title="Card title" bordered={false}>
+            Card content
+          </Card>
+        </Col>
+        <Col className="home-cCards" xs={24} sm={20} md={12} lg={8} span={8}>
+          <Card title="Card title" bordered={false}>
+            Card content
+          </Card>
+        </Col>
+      </Row>
+      <Row className="home-rCards" justify="center">
+
+        <Col className="home-cCards" xs={24} sm={20} md={12} lg={8} span={8}>
+          <Card title="Card title" bordered={false}>
+            Card content
+          </Card>
+        </Col>
+        <Col className="home-cCards" xs={24} sm={20} md={12} lg={8} span={8}>
+          <Card title="Card title" bordered={false}>
+            Card content
+          </Card>
+        </Col>
+        <Col className="home-cCards" xs={24} sm={20} md={12} lg={8} span={8}>
+          <Card title="Card title" bordered={false}>
+            Card content
           </Card>
         </Col>
       </Row>
