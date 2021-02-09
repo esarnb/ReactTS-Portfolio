@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Menu } from 'antd';
+import { Menu,  Avatar, Image } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { HomeOutlined, GithubOutlined, GlobalOutlined, LaptopOutlined } from '@ant-design/icons';
 import Login from "../Login/Login";
@@ -26,6 +26,10 @@ export default class Navbar extends Component {
         <Menu.Item key="github" icon={<GithubOutlined />}> <NavLink to="/github">Github</NavLink> </Menu.Item>
         <Menu.Item key="threejs" icon={<GlobalOutlined />}> <NavLink to="/threejs">ThreeJS</NavLink> </Menu.Item>
         <Menu.Item key="config" icon={<LaptopOutlined />}> <NavLink to="/config">Redux</NavLink> </Menu.Item>
+       
+        <Avatar className="avatar floatRight navatar" src={
+          <Image src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        }/>
         
         <div id="login-btn-nav" className="floatRight" ><Login /></div>
         <div className="floatRight"><Counter /></div>

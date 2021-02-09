@@ -99,6 +99,10 @@ table {
 
 }
 
+.avatar:hover {
+	cursor: zoom-in;
+}
+
 #footer {
 	position: absolute;
 	bottom: 0px;
@@ -109,11 +113,9 @@ table {
 	text-align: center;
 } 
 
-/* #footer {
-	width: 100%;
-	padding: 10px;
-	line-height: 2px;
-	background-color: rgb(193, 193, 193);
-	text-align: center;
-
-} */
+#plsLogin {
+	position: absolute;
+	top: 30%;
+	left: 45%;
+	font-size: 30px;
+}

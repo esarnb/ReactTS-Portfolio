@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import Counter from "../../components/Counter/Counter";
+import Profile from "../../components/Profile/Profile";
 import "./Config.css";
 
 export default function Config() {
@@ -29,6 +30,7 @@ export default function Config() {
 
       <div className="div-center text-center">
         <section>
+          <Profile />
           [Avatar, Username], [email, password]
         </section>
 
