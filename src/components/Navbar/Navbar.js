@@ -25,7 +25,7 @@ export default class Navbar extends Component {
         <Menu.Item key="home" icon={<HomeOutlined />}> <NavLink to="/">Home</NavLink> </Menu.Item>
         <Menu.Item key="github" icon={<GithubOutlined />}> <NavLink to="/github">Github</NavLink> </Menu.Item>
         <Menu.Item key="threejs" icon={<GlobalOutlined />}> <NavLink to="/threejs">ThreeJS</NavLink> </Menu.Item>
-        <Menu.Item key="redux" icon={<LaptopOutlined />}> <NavLink to="/redux">Redux</NavLink> </Menu.Item>
+        <Menu.Item key="config" icon={<LaptopOutlined />}> <NavLink to="/config">Redux</NavLink> </Menu.Item>
         
         <div id="login-btn-nav" className="floatRight" ><Login /></div>
         <div className="floatRight"><Counter /></div>

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Card, Col, Row, Skeleton, Empty } from 'antd';
 import axios from "axios";
 import dayjs from "dayjs";
@@ -27,7 +27,7 @@ export default class Projects extends Component {
   render() {
     let { loading, userdata } = this.state;
     return (
-      <Fragment>
+      <div className="git-container">
         
         <div className="text-center">
           <h1 className="page-title">Github Repositories</h1>
@@ -45,6 +45,7 @@ export default class Projects extends Component {
                   type="inner"
                   title={item.title}
                   extra={<a href={item.b1.link}>Repo</a>}
+                  className="projCard"
                 >
                   {item.desc} <br /> 
                   {/* [Updated: {dayjs().from(item.lastRepoUpdate, true)}] */}
@@ -56,7 +57,7 @@ export default class Projects extends Component {
           </Row>
         )}
 
-      </Fragment>
+      </div>
     )
   }
 }

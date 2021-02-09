@@ -1,0 +1,10 @@
+#todoList, #todoList li {
+    margin-left: 10px;
+}
+
+#todoList li:nth-child(odd) {
+    list-style: circle inside;
+}
+#todoList li:nth-child(even) {
+    list-style: disc inside;
+}

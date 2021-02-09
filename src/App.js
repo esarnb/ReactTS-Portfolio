@@ -6,7 +6,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Navbar from "./components/Navbar/Navbar";
 import Github from "./pages/Github/Github";
 import ThreeJS from "./pages/ThreeJS/ThreeJS";
-import Redux from "./pages/Redux/Redux";
+import Config from "./pages/Config/Config";
 import "./styles.css";
 // const { Footer } = Layout;
 
@@ -21,7 +21,7 @@ function App() {
             <Route exact path="/" component={Home}/>
             <Route exact path="/github" component={Github}/>
             <Route exact path="/threejs" component={ThreeJS}/>
-            <Route exact path="/redux" component={Redux}/>
+            <Route exact path="/config" component={Config}/>
             <Route path="/" component={NotFound}/>
           </Switch>
           {/* <Footer id="footer">esarnb</Footer> */}
