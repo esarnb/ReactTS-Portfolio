@@ -16,7 +16,7 @@ function Home() {
       <Row className="home-rCards" justify="center">
         <Col className="home-cCards" xs={24} sm={20} md={12} lg={8} span={8}>
           <Card title="esarnb.com" bordered={false} extra={<a href="https://esarnb.com" target="_blank" rel="noreferrer">View</a>}>
-            Personal website / Technology testing playground. Built with ReactJS, Redux, Ant Design. [Work in progress]
+            Personal website / Technology testing playground! Built with ReactJS, Redux, Ant Design. [Work in progress]
             <br /> <br />
           </Card>
         </Col>
