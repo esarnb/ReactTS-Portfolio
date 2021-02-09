@@ -20,7 +20,7 @@ export default class ThreeJS extends Component {
     setTimeout(() => {    
       this.setState({progress: x+10})
       this.checkProgress()
-    }, 1000)
+    }, 250)
   }
 
   checkProgress () {
