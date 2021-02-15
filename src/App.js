@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import Navbar from "./components/Navbar/Navbar";
-// import Github from "./pages/Github/Github";
+import Github from "./pages/Github/Github";
 // import ThreeJS from "./pages/ThreeJS/ThreeJS";
 // import Config from "./pages/Config/Config";
 import Social from "./components/Social/Social";
@@ -23,8 +23,8 @@ function App() {
 
           <Switch>
             <Route exact path="/" component={Home}/>
-            {/* <Route exact path="/github" component={Github}/>
-            <Route exact path="/threejs" component={ThreeJS}/>
+            <Route exact path="/github" component={Github}/>
+            {/*<Route exact path="/threejs" component={ThreeJS}/>
             {loggedIn ? <Route exact path="/config" component={Config}/> : <div id="plsLogin" className="">Please Log In!</div>} */}
             <Route path="/" component={NotFound}/>
           </Switch>

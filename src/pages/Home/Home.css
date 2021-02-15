@@ -1,5 +1,5 @@
 #home-box {
-    background-color: lightgreen;
+    background-color: rgb(202, 202, 202);
     width: 100%;
     height: calc(100vh - 55px);
 }
