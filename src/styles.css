@@ -110,13 +110,10 @@ table {
 	bottom: 0;
 	width: 100%;
 	text-align: center;
-	background-color: rgb(228, 228, 228);
+	background-color: rgba(228, 228, 228, 0.253);
 	height: 55px;
 } 
 
 #plsLogin {
-	position: absolute;
-	top: 30%;
-	left: 45%;
 	font-size: 30px;
 }
