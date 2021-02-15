@@ -1,12 +1,5 @@
 import React, { Fragment } from "react"
-import {
-    Tag,
-    TagLabel,
-    TagLeftIcon,
-    TagRightIcon,
-    TagCloseButton,
-  } from "@chakra-ui/react"
-import { BellIcon } from '@chakra-ui/icons'
+import { Tag } from "@chakra-ui/react"
 import "./Social.css";
 
 export default function Social() {

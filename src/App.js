@@ -8,6 +8,8 @@ import Navbar from "./components/Navbar/Navbar";
 // import Github from "./pages/Github/Github";
 // import ThreeJS from "./pages/ThreeJS/ThreeJS";
 // import Config from "./pages/Config/Config";
+import Social from "./components/Social/Social";
+
 import "./styles.css";
 // const { Footer } = Layout;
 
@@ -26,7 +28,7 @@ function App() {
             {loggedIn ? <Route exact path="/config" component={Config}/> : <div id="plsLogin" className="">Please Log In!</div>} */}
             <Route path="/" component={NotFound}/>
           </Switch>
-          {/* <Footer id="footer">esarnb</Footer> */}
+          <footer id="footer"><Social /></footer>
         </Router>
 
         

@@ -105,13 +105,13 @@ table {
 }
 
 #footer {
-	position: absolute;
-	bottom: 0px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
 	width: 100%;
-	padding: 10px;
-	line-height: 2px;
-	background-color: rgb(193, 193, 193);
 	text-align: center;
+	background-color: red;
+	height: 55px;
 } 
 
 #plsLogin {
