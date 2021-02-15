@@ -105,15 +105,18 @@ table {
 }
 
 #footer {
-	position: fixed;
-	left: 0;
-	bottom: 0;
+	position: relative;
 	width: 100%;
 	text-align: center;
-	background-color: rgba(228, 228, 228, 0.253);
+	background-color: rgb(187, 187, 187);
 	height: 55px;
 } 
 
 #plsLogin {
+	height: 100vh;
 	font-size: 30px;
 }
+a:active, a:focus, .removeBoxBorder {
+	border: none !important;
+	box-shadow: none !important;
+  }
