@@ -1,13 +1,11 @@
 import React, {Fragment} from "react"
-import { useSelector } from "react-redux";
-
 import "./NotFound.css";
 
 function NotFound() {
   return (
-    <div>
-        NotFound
-    </div>
+    <Fragment>
+      Nothing to see here c:
+    </Fragment>
   )
 }
 export default NotFound

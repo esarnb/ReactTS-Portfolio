@@ -2,7 +2,7 @@
 
 ### Technologies
 * React JS Framework
-* Ant Design: UI Library
+* Chakra: [Docs](https://chakra-ui.com/docs) 
 * React Redux:  
     * Unified state management between pages for reused components
 * DayJS: Time library
