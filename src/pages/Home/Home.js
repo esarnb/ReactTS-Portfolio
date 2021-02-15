@@ -1,14 +1,12 @@
 import React, {Fragment} from "react"
-import { Container } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import "./Home.css";
 
 function Home() {
   return (
-    <Container id="home-container">
+    <Box id="home-box">
         Home
-        <br />
-
-    </Container>
+    </Box>
   )
 }
 export default Home
