@@ -1,12 +1,12 @@
 import React, {Fragment} from "react"
-
+import { Container } from "@chakra-ui/react";
 import "./Home.css";
 
 function Home() {
   return (
-    <div>
+    <Container id="home-container">
         Home
-    </div>
+    </Container>
   )
 }
 export default Home
