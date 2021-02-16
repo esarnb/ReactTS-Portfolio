@@ -1,27 +1,39 @@
-import React, {Fragment} from "react"
+import React, {Component} from 'react';
+import { Menu,  Avatar, Image } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { Box, Image, Avatar, Tabs, TabList, Tab, TabPanels, TabPanel } from "@chakra-ui/react"
-import Counter from "../Counter/Counter"
-import Login from "../Login/Login"
+import { HomeOutlined, GithubOutlined, GlobalOutlined, LaptopOutlined } from '@ant-design/icons';
+import Login from "../Login/Login";
+import Counter from "../Counter/Counter";
 import "./Navbar.css";
 
-function Navbar() {
-  return (
-    <Box id="nav-box"  className="removeBoxBorder">
-      <Tabs className="removeBoxBorder">
-        <TabList  className="removeBoxBorder">
-           <NavLink style={{ outline: 'none' }} className="navlink" to="/"><Tab className="removeBoxBorder"> Home </Tab> </NavLink>
-           <NavLink style={{ outline: 'none' }} className="navlink" to="/github"><Tab className="removeBoxBorder"> Github </Tab> </NavLink>
-           <NavLink style={{ outline: 'none' }} className="navlink" to="/threejs"><Tab className="removeBoxBorder"> ThreeJS </Tab> </NavLink>
-           <NavLink style={{ outline: 'none' }} className="navlink" to="/config"><Tab className="removeBoxBorder"> Redux </Tab> </NavLink>
-           <Tab className="removeBoxBorder"> <Login style={{ outline: 'none' }} className="floatRight" /> </Tab>
-          <span className="moveRight"> 
-            <Avatar className="floatRight" name="Kent Dodds" src="https://bit.ly/kent-c-dodds" />
-          </span>
-        </TabList>
+// const { SubMenu } = Menu;
 
-      </Tabs>
-    </Box>  
-  )
+export default class Navbar extends Component {
+  state = {
+    current: 'mail',
+  };
+
+  handleClick = e => {
+    console.log('click ', e);
+    this.setState({ current: e.key });
+  };
+
+  render() {
+    const { current } = this.state;
+    return (
+      <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal" >
+        <Menu.Item key="home" icon={<HomeOutlined />}> <NavLink to="/">Home</NavLink> </Menu.Item>
+        <Menu.Item key="github" icon={<GithubOutlined />}> <NavLink to="/github">Github</NavLink> </Menu.Item>
+        <Menu.Item key="threejs" icon={<GlobalOutlined />}> <NavLink to="/threejs">ThreeJS</NavLink> </Menu.Item>
+        <Menu.Item key="config" icon={<LaptopOutlined />}> <NavLink to="/config">Redux</NavLink> </Menu.Item>
+       
+        <Avatar className="avatar floatRight navatar" src={
+          <Image src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        }/>
+        
+        <div id="login-btn-nav" className="floatRight" ><Login /></div>
+        <div className="floatRight"><Counter /></div>
+      </Menu>
+    );
+  }
 }
-export default Navbar

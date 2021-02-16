@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from "react";
-import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react"
+import { Progress } from 'antd';
 import Space from "./Space";
 import "./ThreeJS.css";
 
@@ -52,9 +52,13 @@ export default class ThreeJS extends Component {
                     <li>Move: Unknown, maybe lost in file misplace. </li>
                   </ul>
                   <br /> 
-                  <CircularProgress  color="orange.400" type="circle"
-                     size="100px" thickness="4px"
-                    value={this.state.progress}
+                  <Progress
+                    type="circle"
+                    strokeColor={{
+                      '0%': '#108ee9',
+                      '100%': '#87d068',
+                    }}
+                    percent={this.state.progress}
                   />
                   <br /> <br /> <br /> 
                   <p>Note to self / Todo: </p>

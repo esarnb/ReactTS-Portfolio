@@ -1,11 +1,17 @@
-#nav-box {
-    width: 100%;
-    background-color: rgb(255, 255, 255);
+#login-btn-nav {
+    margin-right: 1%;
 }
 
-.navlink {
-    margin-top: 4px !important;
-    margin: 0px;
-    padding: 0px;
-    text-decoration: none !important;
+.navatar {
+    margin: 3px 3px 0px 0px !important;
 }
+
+.nav-right {
+    float: right;
+}
+
+/* @media screen and (max-width: 763px) {
+	.nav-right {
+        float: left;
+    }
+} */

@@ -1,0 +1,11 @@
+#nav-box {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+.navlink {
+    margin-top: 4px !important;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none !important;
+}

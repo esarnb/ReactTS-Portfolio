@@ -47,6 +47,11 @@ table {
 	border-spacing: 0;
 }
 
+/* Ant Design CSS */
+@import 'antd/dist/antd.css';
+
+
+
 /*
 
 	Global CSS 
@@ -84,12 +89,6 @@ table {
 	float: right;
 }
 
-.moveRight {
-	display: absolute;
-	right: 0;
-	width: 100%;
-}
-
 .bottom-counter {
     /* position: absolute; */
     bottom: 0px;
@@ -105,18 +104,18 @@ table {
 }
 
 #footer {
-	position: relative;
+	position: absolute;
+	bottom: 0px;
 	width: 100%;
+	padding: 10px;
+	line-height: 2px;
+	background-color: rgb(193, 193, 193);
 	text-align: center;
-	background-color: rgb(187, 187, 187);
-	height: 55px;
 } 
 
 #plsLogin {
-	height: 100vh;
+	position: absolute;
+	top: 30%;
+	left: 45%;
 	font-size: 30px;
 }
-a:active, a:focus, .removeBoxBorder {
-	border: none !important;
-	box-shadow: none !important;
-  }

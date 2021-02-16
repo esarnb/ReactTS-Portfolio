@@ -8,14 +8,3 @@
 #todoList li:nth-child(even) {
     list-style: disc inside;
 }
-
-#config-box {
-    height: 100vh;
-    padding-bottom: 55px;
-}
-
-@media only screen and (min-width: 500px) {
-    #config-box {
-        height: 100%;
-    }
-}

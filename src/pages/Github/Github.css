@@ -6,38 +6,17 @@
 /* Shadow Glow Gradient pulled from http://jsfiddle.net/urwjb06x/1/ */
 .projCard {
     background-image: 
-        linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)),
-        linear-gradient(90deg, rgba(255,255, 255,0), rgb(255, 255, 255), rgba(255,255,255,0)) !important;
+    linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)),
+    linear-gradient(90deg, rgba(255,255, 255,0), rgb(255, 255, 255), rgba(255,255,255,0)) !important;
     border:none;
     /* background-color: transparent !important; */
     background-repeat: no-repeat !important;
     background-position: 0 0, 0 1px !important;
     background-size: 100% 1px !important;
     box-shadow: rgba(100, 100, 100, 0.8) 0 0 20px;
+
 }
 
 .git-container {
     background-color: rgb(214, 214, 214);
-}
-
-.git-card-title {
-    font-weight: 700;
-    text-align: center;
-    /* background-color: rgba(255, 0, 0, 0.664); */
-}
-
-.git-card-desc {
-    font-weight: 400;
-    text-align: center;
-    /* background-color: lightblue; */
-}
-
-.git-card-meta {
-    font-weight: 200;
-    text-align: center;
-    /* background-color: rgba(255, 255, 0, 0.671); */
-}
-
-.git-card-btn {
-    background-color: rgba(255, 0, 0, 0.432) !important;
 }
