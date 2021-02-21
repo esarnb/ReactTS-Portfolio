@@ -23,7 +23,7 @@ function Home() {
         
         <Col className="home-cCards" xs={24} sm={20} md={12} lg={8} span={8}>
           <Card title="beta.esarnb.com" bordered={false} extra={<a href="http://beta.esarnb.com" target="_blank" rel="noreferrer">View</a>}>
-            Beta subdomain website - learning playground. Built with Next.JS and Semantic UI. [Work in progress]
+            Beta subdomain website - learning playground live updates.
             <br /> <br />
           </Card>
         </Col>

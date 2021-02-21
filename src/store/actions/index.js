@@ -22,3 +22,10 @@ export const gitUpdate = () => {
         type: "UPDATE"
     }
 }
+
+export const setUserName = (newName) => {
+    return {
+        type: "setName",
+        payload: newName
+    }
+}
