@@ -89,6 +89,12 @@ table {
 	float: right;
 }
 
+.flex-right {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .bottom-counter {
     /* position: absolute; */
     bottom: 0px;

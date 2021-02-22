@@ -5,23 +5,18 @@ import { setUserName } from "../../store/actions";
 // import "./Name.css";
 
 function Name() {
-  const person = useSelector(state => state.username);
   const dispatch = useDispatch()
-  const submitting = (newName) => { dispatch(setUserName(newName)) }
-
+  let person = useSelector(state => state.username);
+  const updateName = (named) => named ? dispatch(setUserName(named)) : dispatch(setUserName("No Name"))
   return (
     <div>
       Redux Name: {person} 
       <br />
-      <span id="Name-btn-container">
-        <Input placeholder="John Smith" onPressEnter={(e) => {
-          console.log(e.target.defaultValue);
-          dispatch(setUserName(e.target.defaultValue))
-        }}/>
-        {/* <Button onClick={() => {
-          
-        }}> Submit </Button> */}
-      </span>
+      <Input placeholder="Type your new name here." onChange={(e) => updateName(e.target.value)} />
+        <div className="flex-right">
+          {/* <Input placeholder="Type your new name here." onChange={(e) => updateName(e.target.value)} onPressEnter={(e) => updateName(e.target.defaultValue)}/> */}
+          {/* <Button onClick={(e) => {  updateName(person) }}>submit</Button> */}
+        </div>
     </div>
   )
 }

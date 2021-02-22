@@ -24,17 +24,16 @@ export default class Navbar extends Component {
     const { current } = this.state;
     return (
       <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal" >
-        <Menu.Item key="home" icon={<HomeOutlined />}> <NavLink to="/">Home</NavLink> </Menu.Item>
-        <Menu.Item key="github" icon={<GithubOutlined />}> <NavLink to="/github">Github</NavLink> </Menu.Item>
-        <Menu.Item key="threejs" icon={<GlobalOutlined />}> <NavLink to="/threejs">ThreeJS</NavLink> </Menu.Item>
-        <Menu.Item key="config" icon={<LaptopOutlined />}> <NavLink to="/config">Redux</NavLink> </Menu.Item>
+        <Menu.Item icon={<HomeOutlined />}> <NavLink to="/">Home</NavLink> </Menu.Item>
+        <Menu.Item icon={<GithubOutlined />}> <NavLink to="/github">Github</NavLink> </Menu.Item>
+        <Menu.Item icon={<GlobalOutlined />}> <NavLink to="/threejs">ThreeJS</NavLink> </Menu.Item>
+        <Menu.Item icon={<LaptopOutlined />}> <NavLink to="/config">Redux</NavLink> </Menu.Item>
        
         <Avatar className="avatar floatRight navatar" src={
           <Image src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
         }/>
-        <div id="login-btn-nav" className="floatRight" ><Login /></div>
+        <div id="login-btn-nav" className="floatRight" ><Login/></div>
         <DisplayName />
-        <div className="floatRight"><Counter /></div>
       </Menu>
     );
   }
