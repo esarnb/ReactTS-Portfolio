@@ -1,11 +1,9 @@
-const initialState = {
-    name: "user"
-}
 
-const userReducer = (state = initialState, action) => {
+const userReducer = (state = "No name", action) => {
     switch(action.type) {
-        case "setName":
-            return action.payload;
+        case "SETNAME":
+            state = action.payload;
+            return state
         default: 
             return state;
     }

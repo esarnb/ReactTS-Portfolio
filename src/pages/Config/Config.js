@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import Counter from "../../components/Counter/Counter";
 import Profile from "../../components/Profile/Profile";
-import Name from "../../components/Name/Name";
+import SetName from "../../components/SetName/SetName";
 import "./Config.css";
 
 export default function Config() {
@@ -37,7 +37,7 @@ export default function Config() {
 
         <br /> <br />
         
-        <Name />        
+        <SetName />        
 
         <br /> <br />
         <section>

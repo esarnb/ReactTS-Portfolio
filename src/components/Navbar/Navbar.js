@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { HomeOutlined, GithubOutlined, GlobalOutlined, LaptopOutlined } from '@ant-design/icons';
 import Login from "../Login/Login";
 import Counter from "../Counter/Counter";
+import DisplayName from "../DisplayName/DisplayName";
+
 import "./Navbar.css";
 
 // const { SubMenu } = Menu;
@@ -30,8 +32,8 @@ export default class Navbar extends Component {
         <Avatar className="avatar floatRight navatar" src={
           <Image src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
         }/>
-        
         <div id="login-btn-nav" className="floatRight" ><Login /></div>
+        <DisplayName />
         <div className="floatRight"><Counter /></div>
       </Menu>
     );
