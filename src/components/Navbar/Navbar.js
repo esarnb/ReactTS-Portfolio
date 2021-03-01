@@ -3,7 +3,7 @@ import { Menu,  Avatar, Image } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { HomeOutlined, GithubOutlined, GlobalOutlined, LaptopOutlined } from '@ant-design/icons';
 import Login from "../Login/Login";
-import Counter from "../Counter/Counter";
+// import Counter from "../Counter/Counter";
 import DisplayName from "../DisplayName/DisplayName";
 
 import "./Navbar.css";

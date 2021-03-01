@@ -1,5 +1,5 @@
 import React from "react"
-import { Input, Button } from 'antd';
+import { Input } from 'antd';
 import {useDispatch, useSelector} from "react-redux";
 import { setUserName } from "../../store/actions";
 // import "./Name.css";
