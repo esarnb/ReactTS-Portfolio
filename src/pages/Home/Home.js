@@ -53,6 +53,7 @@ function Home() {
             Add a dark/light theme similar to portfolio. Add background skin images - also based on theme color. New tab for chat + profile integration.
           </Card>
         </Col>
+      <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="esarnb"><a class="LI-simple-link" href='https://www.linkedin.com/in/esarnb?trk=profile-badge'>Esar Behlum</a></div>
       </Row>
 
     </Fragment>
