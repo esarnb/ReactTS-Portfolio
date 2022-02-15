@@ -1,0 +1,19 @@
+.text-center {
+    text-align: center;
+}
+
+.elem-center {
+    justify-content: center;
+}
+
+.vert-center {
+    align-content: center;
+}
+
+.center {
+
+}
+
+.h1-title {
+    font-size: larger;
+}
