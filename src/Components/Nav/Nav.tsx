@@ -105,7 +105,7 @@ const Nav = () => {
               >
                 {pages.map(({path, name}) => (
                   <MenuItem key={name} onClick={handleCloseNavMenu}>
-                    <Link to={path} className="navBtn"><Typography textAlign="center">{name}</Typography></Link>
+                    <Link to={path} className="navBtn darkTheme"><Typography textAlign="center">{name}</Typography></Link>
                   </MenuItem>
                 ))}
               </Menu>
@@ -122,12 +122,13 @@ const Nav = () => {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map(({path, name}) => (
-                <Link to={path} className="navBtn">
-                  <Button
+                <Link to={path} className="navBtn darkTheme">
+                  <Button 
                     key={name}
                     onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
-                  >
+                    sx={{ my: 2, display: 'block' }}
+                    className="darkTheme"
+                >
                     {name}
                   </Button>
                 </Link>

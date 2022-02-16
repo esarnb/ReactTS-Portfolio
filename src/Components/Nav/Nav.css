@@ -2,11 +2,17 @@
     text-decoration: none;
 }
 
+.darkTheme {
+    color:rgb(255, 212, 212) !important;
+}
+
+.lightTheme {
+    color: rgb(61, 61, 61);
+}
+
 #dropDownPagesNav {
     flex-grow: 0.8;
 }
-
-
 
 @media only screen and (min-width: 900px) {
     #dropDownIconNav {
