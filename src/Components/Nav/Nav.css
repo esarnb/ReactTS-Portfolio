@@ -1,3 +1,19 @@
 .navBtn {
     text-decoration: none;
 }
+
+#dropDownPagesNav {
+    flex-grow: 0.8;
+}
+
+
+
+@media only screen and (min-width: 900px) {
+    #dropDownIconNav {
+        display: none;
+    }
+    
+    #dropDownPagesNav {
+        flex-grow: 0.75;
+    }
+}

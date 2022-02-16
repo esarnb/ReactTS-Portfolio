@@ -23,7 +23,7 @@ const pages = [
   {path: "/discord", name: "Discord"},
   {path: "/config", name: "Config"},
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const darkTheme = createTheme({
   palette: {
@@ -73,7 +73,7 @@ const Nav = () => {
 
             </Typography>
 
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <Box id="dropDownPagesNav" sx={{ display: { xs: 'flex', md: 'center' } }}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -81,6 +81,7 @@ const Nav = () => {
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
                 color="inherit"
+                id="dropDownIconNav"
               >
                 <MenuIcon />
               </IconButton>
@@ -132,7 +133,7 @@ const Nav = () => {
                 </Link>
               ))}
             </Box>
-
+{/* 
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -161,7 +162,7 @@ const Nav = () => {
                   </MenuItem>
                 ))}
               </Menu>
-            </Box>
+            </Box> */}
           
               
           </Toolbar>
