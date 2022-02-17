@@ -1,0 +1,13 @@
+.spin {
+    animation: rotate 1.5s linear infinite;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
