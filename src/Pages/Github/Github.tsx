@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import ProjectCards from "../../Components/ProjectCards/ProjectCards";
-import LoaderCards from "../../Components/LoaderCards/LoaderCards";
+import BasicCard from "../../Components/BasicCard/BasicCard";
 import GithubCards from "../../Components/GithubCards/GithubCards";
 // import LoadingIcon from '../../Components/LoadingIcon/LoadingIcon';
 import { Group, Button, Container, ActionIcon } from "@mantine/core";
@@ -41,7 +41,12 @@ function Github() {
                   {/* <LoaderCards></LoaderCards> */}
       
                 </> : 
-                
+                /*
+
+                  other loading idea: https://mantine.dev/core/loading-overlay/
+
+                */
+
                 <Button disabled leftIcon={""} loading={isLoading} loaderPosition="right">Pulling github data...</Button> 
               }            
             </Group>
