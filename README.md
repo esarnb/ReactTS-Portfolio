@@ -1,8 +1,7 @@
 # React Typescript Portfolio
 * React Router Dom
 * React spring (web/three)
-* Material UI (MUI)
-* Emotion (React & styled)
+* [Mantine](https://mantine.dev/)
 
 # Ideas
 * Homepage for introduction + 3 Projects
