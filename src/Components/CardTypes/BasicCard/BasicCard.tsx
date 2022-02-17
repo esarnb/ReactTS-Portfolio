@@ -1,5 +1,5 @@
 import { Paper, Text } from "@mantine/core";
-import { singleCard } from "../../Interfaces/Cards";
+import { singleCard } from "../../../Interfaces/Cards";
 import "./BasicCard.css";
 
 function BasicCard(props: any) {

@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import { Container } from "@mantine/core";
-import BasicCard from "../../Components/BasicCard/BasicCard";
+import BasicCard from "../../Components/CardTypes/BasicCard/BasicCard";
 import "../../App.css";
 import "./Home.css";
 

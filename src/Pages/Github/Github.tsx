@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import ProjectCards from "../../Components/ProjectCards/ProjectCards";
-import BasicCard from "../../Components/BasicCard/BasicCard";
-import GithubCards from "../../Components/GithubCards/GithubCards";
+import ProjectCards from "../../Components/CardTypes/ProjectCards/ProjectCards";
+import BasicCard from "../../Components/CardTypes/BasicCard/BasicCard";
+import GithubCards from "../../Components/CardTypes/GithubCards/GithubCards";
 // import LoadingIcon from '../../Components/LoadingIcon/LoadingIcon';
 import { Group, Button, Container, Transition } from "@mantine/core";
 
