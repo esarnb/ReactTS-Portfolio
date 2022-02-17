@@ -2,6 +2,7 @@
 * React Router Dom
 * React spring (web/three)
 * [Mantine](https://mantine.dev/)
+* [Radix Icons](https://icons.modulz.app/)
 
 # Ideas
 * Homepage for introduction + 3 Projects

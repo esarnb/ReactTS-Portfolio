@@ -8,7 +8,10 @@ function Home() {
         <title>Home</title>
         <meta name="description" content="My Home page through Helmet" />
       </Helmet>
-      <div>Home</div>
+      <div>
+        Home
+      </div>
+      
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from "react-router-dom";
+import { ActionIcon } from "@mantine/core";
 import "./Nav.css";
 
 const pages = [
@@ -15,7 +16,9 @@ const pages = [
   function Nav() {
 
   return(
-    <div>  </div>
+    <div>
+      
+    </div>
   );
 };
 export default Nav;

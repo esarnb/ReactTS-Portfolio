@@ -1,4 +1,5 @@
 // https://codepen.io/william-goldsworthy/pen/JzVajj?editors=1100
+import { Button, Space, Group } from "@mantine/core";
 
 import "./GithubCards.css";
 
@@ -7,6 +8,7 @@ interface singleCard {
   desc?: string,
   img?: string, 
   alt?: string,
+  color?: string
 }
 
 const projects: singleCard[] = [
@@ -15,43 +17,47 @@ const projects: singleCard[] = [
     desc: "2",
     img: "3",
     alt: "4",
+    color: "red"
   },
   {
     title: "a",
     desc: "b",
     img: "c",
     alt: "d",
+    color: "blue"
   }
 ]
 
 function GithubCards(props: any) {
-   let cards = projects.map( (each: singleCard, index) => Card(each));
+   let cards = projects.map( (each: singleCard, i) => <Card key={"ghCard#"+i} data={each}/>);
 
    return (
-    <div className="container">
+    <div className="row1-container">
+      {cards}
     </div>
    )
 }
 
-function Card({ title, desc, img, alt }: singleCard) {
+function Card(props: any) {
+  const { title, desc, img, alt }: singleCard = props.data;
+  
   return (
-    <div className="card">
-      <div className="face face1">
-          <div className="content">
-              <div className="icon">
-                  <i className="fa fa-github-square" aria-hidden="true"></i>
-              </div>
-          </div>
+      
+    <div className="card gh-card-light">
+      <h3 className="title">{title}</h3>
+      <div className="content">
+        {desc}
+        <img src={img} alt={alt} />
       </div>
-      <div className="face face2">
-          <div className="content">
-              <h3>
-                  <a href="https://github.com/atom888" target="_blank">atom888</a>
-              </h3>
-              <p>This is where I share code and work on projects.</p>
-          </div>
+      <div className="footer">
+      <Group>
+        <Button compact>Repo</Button>
+        <Button compact>Live</Button>
+      </Group>
       </div>
+      
     </div>
+
   )
 }
 

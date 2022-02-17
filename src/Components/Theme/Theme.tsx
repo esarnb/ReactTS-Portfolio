@@ -1,10 +1,11 @@
+import { Container } from '@mantine/core';
 import "./Theme.css";
 
 function Theme(props: any) {
     return (
-        <div className="page-container">
+        <Container padding={0} id="page-container">
             {props.children}
-        </div>
+        </Container>
     )
 }
 
