@@ -12,3 +12,4 @@
 * Discord Integration Bot (Live websocket status)
 * Discord Integration Servers (Live websocket config changes) 
 * Browser data for visual config
+* Move Ideas to ToDo Component using [Timeline](https://mantine.dev/core/timeline/)

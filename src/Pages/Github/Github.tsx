@@ -4,7 +4,7 @@ import ProjectCards from "../../Components/ProjectCards/ProjectCards";
 import BasicCard from "../../Components/BasicCard/BasicCard";
 import GithubCards from "../../Components/GithubCards/GithubCards";
 // import LoadingIcon from '../../Components/LoadingIcon/LoadingIcon';
-import { Group, Button, Container, ActionIcon } from "@mantine/core";
+import { Group, Button, Container, Transition } from "@mantine/core";
 
 import "./Github.css";
 import "../../App.css";
@@ -35,10 +35,13 @@ function Github() {
               {
                 data ? 
                 <>
-                  
-                  <GithubCards></GithubCards>
-                  {/* <ProjectCards></ProjectCards> */}
-                  {/* <LoaderCards></LoaderCards> */}
+                  {/* <Transition mounted={!isLoading} transition="fade" duration={10000} timingFunction="ease"> */}
+                    {/* {(styles) => <span style={styles}> */}
+                      <GithubCards></GithubCards>
+                      {/* <ProjectCards></ProjectCards> */}
+                      {/* <LoaderCards></LoaderCards> */}
+                    {/* </span>} */}
+                  {/* </Transition> */}
       
                 </> : 
                 /*
