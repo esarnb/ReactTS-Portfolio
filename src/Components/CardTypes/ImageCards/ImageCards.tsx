@@ -11,23 +11,22 @@ export default function ImageCard() {
     <div style={{ width: 340, margin: 'auto' }}>
       <Card shadow="sm" padding="lg">
         <Card.Section>
-          <Image src="./image.png" height={160} alt="Norway" />
+          <Image src="./image.png" height={160} alt="Image Alt" />
         </Card.Section>
 
         <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
-          <Text weight={500}>Norway Fjord Adventures</Text>
+          <Text weight={500}>Title</Text>
           <Badge color="pink" variant="light">
-            On Sale
+            Badge Title
           </Badge>
         </Group>
 
         <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
-          With Fjord Tours you can explore more of the magical fjord landscapes with tours and
-          activities on and around the fjords of Norway
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe explicabo incidunt, tenetur sequi rerum, tempora nostrum accusamus velit nobis nesciunt officiis quae illum aliquam iure architecto, ea officia quibusdam porro.
         </Text>
 
         <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
-          Book classic tour now
+          Button name
         </Button>
       </Card>
     </div>

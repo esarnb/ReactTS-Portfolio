@@ -1,12 +1,23 @@
-import { Paper, Text, Skeleton } from "@mantine/core";
+import { Paper, Button, Text, Skeleton, Anchor } from "@mantine/core";
+import { BaseData } from "../../../Interfaces/Cards";
 import "./BasicCard.css";
 
 function BasicCard(props: any) {
-  const { title, desc, img, alt, padding, shadow, radius} = props;
+  const { title, desc, img, alt, btnText, link, padding, shadow, radius}: BaseData = props;
   return (
     <Paper className="BCGit" padding={padding} shadow={shadow} radius={radius} withBorder>
-      <Text>{title ?? <Skeleton height={8} radius="xl" /> }</Text>
+      <Text size="lg" underline>{title ?? <Skeleton height={8} radius="xl" /> }</Text>
       <Text>{desc ?? <Skeleton height={8} mt={6} radius="xl" />}
+      <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
+        {btnText}
+      </Button>
+      {
+        link ? <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
+          <Anchor href={link} target="_blank">
+            Live
+          </Anchor>
+        </Button> : <></>
+      }
       </Text>
     </Paper>
   )

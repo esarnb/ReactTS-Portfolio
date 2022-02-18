@@ -1,3 +1,5 @@
+import {MantineNumberSize, MantineShadow} from "@mantine/core";
+
 export interface singleCard {
   title?: string,
   desc?: string,
@@ -6,10 +8,14 @@ export interface singleCard {
   color?: string
 }
 
-export interface GitData {
-  title: string,
-  desc: string,
-  padding: string,
-  shadow: string,
-  radius: string
+export interface BaseData {
+  title?: string | React.ReactElement,
+  desc?: string | React.ReactElement,
+  btnText?: string,
+  link?: string | null,
+  img?: string,
+  alt?: string,
+  padding?: MantineNumberSize | undefined,
+  shadow?: MantineShadow | undefined,
+  radius?: MantineNumberSize | undefined
 }

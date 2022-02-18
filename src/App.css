@@ -19,6 +19,11 @@
     margin: 1%;
 }
 
+.main-subtitle {
+    font-size: 30px;
+    margin: 1%;
+}
+
 .shown {
     display: inherit;
 }
