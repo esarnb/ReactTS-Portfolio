@@ -1,8 +1,9 @@
-#gh-container {
-    
-}
-
 #hoverIns {
     margin: 1%;
     padding: 1%;
+}
+
+#gh-container {
+    width: 100% !important;
+    height: 90vh !important;
 }

@@ -17,7 +17,7 @@ const pages = [
 export default function Nav() {
   const headerRef = useRef<any|null>(null);
   const navTabs = (
-    <span style={{width: "fit-content", backgroundColor: "red"}} ref={headerRef}>
+    <span style={{width: "fit-content"}} ref={headerRef}>
       {
         pages.map(({path, name}, i) => {
           return <Anchor key={"navBtnKey#"+i} className="navBtnsText" component={Link} to={path}>

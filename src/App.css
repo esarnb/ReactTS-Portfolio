@@ -18,3 +18,11 @@
     font-size: 40px;
     margin: 1%;
 }
+
+.shown {
+    display: inherit;
+}
+
+.hide {
+    display: none;
+}

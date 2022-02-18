@@ -5,3 +5,11 @@ export interface singleCard {
   alt?: string,
   color?: string
 }
+
+export interface GitData {
+  title: string,
+  desc: string,
+  padding: string,
+  shadow: string,
+  radius: string
+}

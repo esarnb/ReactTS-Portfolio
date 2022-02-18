@@ -1,16 +1,12 @@
-import { Paper, Text } from "@mantine/core";
-import { singleCard } from "../../../Interfaces/Cards";
+import { Paper, Text, Skeleton } from "@mantine/core";
 import "./BasicCard.css";
 
 function BasicCard(props: any) {
-  const { title, desc, img, alt }: singleCard = props;
-
+  const { title, desc, img, alt, padding, shadow, radius} = props;
   return (
-    <Paper padding="xl" shadow="xl" radius="md" withBorder>
-      <Text>Paper is the most basic ui component</Text>
-      <Text>
-        Use it to create cards, dropdowns, modals and other components that require background
-        with shadow
+    <Paper className="BCGit" padding={padding} shadow={shadow} radius={radius} withBorder>
+      <Text>{title ?? <Skeleton height={8} radius="xl" /> }</Text>
+      <Text>{desc ?? <Skeleton height={8} mt={6} radius="xl" />}
       </Text>
     </Paper>
   )

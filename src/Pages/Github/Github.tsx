@@ -1,62 +1,68 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import ProjectCards from "../../Components/CardTypes/ProjectCards/ProjectCards";
-import BasicCard from "../../Components/CardTypes/BasicCard/BasicCard";
-import GithubCards from "../../Components/CardTypes/GithubCards/GithubCards";
-// import LoadingIcon from '../../Components/LoadingIcon/LoadingIcon';
-import { Group, Button, Container, Transition } from "@mantine/core";
-
+import BasicCard  from "../../Components/CardTypes/BasicCard/BasicCard";
+import { Group, Button, Container, ScrollArea } from "@mantine/core";
+import { GitData } from "../../Interfaces/Cards";
 import "./Github.css";
 import "../../App.css";
+
 function Github() {
   const [isTouchScreen, setIsTouchScreen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState("");
+  const [data, setData] = useState<GitData[]|null>(null);
 
   useEffect(() => {
     setTimeout(() => {
-      setData("x")
+      setData([
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+        { title: "x", desc: "x", padding: "md", shadow: "md", radius: "md" },
+      ])
       setIsLoading(false);
     }, 2500);
   }, [])
-
   return (
     <>
       <Helmet>
         <title>Github</title>
         <meta name="description" content="My Github page through Helmet" />
       </Helmet>
-      <Container padding={0} id="gh-container">
+      
+      <Container padding={20}>
         <h1 className="main-title text-center">Github</h1>
 
-        <div>
-            {data ? <div className="text-center" id="hoverIns">{isTouchScreen ? "Click on" : "Hover over"} the cards below!</div> : null}
-            <Group position="center">
-              {
-                data ? 
-                <>
-                  {/* <Transition mounted={!isLoading} transition="fade" duration={10000} timingFunction="ease"> */}
-                    {/* {(styles) => <span style={styles}> */}
-                      <GithubCards></GithubCards>
-                      {/* <ProjectCards></ProjectCards> */}
-                      {/* <LoaderCards></LoaderCards> */}
-                    {/* </span>} */}
-                  {/* </Transition> */}
-      
-                </> : 
-                /*
+        <ScrollArea id="gh-container" >
 
-                  other loading idea: https://mantine.dev/core/loading-overlay/
-
-                */
-
-                <Button disabled leftIcon={""} loading={isLoading} loaderPosition="right">Pulling github data...</Button> 
-              }            
-            </Group>
-          
-        </div>
+              <Group position="center">
+                {
+                  data ? data.map(({ title, desc, padding, shadow, radius }: GitData, i: Number) => <BasicCard key={"ghPkey#"+i} title={title} desc={desc} padding={padding} shadow={shadow} radius={radius} ></BasicCard >)
+                  : <Button loading={isLoading} loaderPosition="right">Pulling github data...</Button> 
+                }
+              </Group>
 
 
+        </ScrollArea>
       </Container>
      
     </>
