@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet";
 import ProjectCards from "../../Components/CardTypes/ProjectCards/ProjectCards";
+import "./Portfolio.css";
 function Portfolio() {
   return (
     <>

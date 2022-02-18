@@ -3,7 +3,7 @@ import "./Theme.css";
 
 function Theme(props: any) {
     return (
-        <Container padding={0} id="page-container">
+        <Container fluid padding={0} id="page-container">
             {props.children}
         </Container>
     )

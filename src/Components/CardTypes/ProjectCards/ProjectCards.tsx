@@ -14,14 +14,14 @@ const projects: singleCard[] = [
     desc: "2",
     img: "3",
     alt: "4",
-    color: "red"
+    // color: "red"
   },
   {
     title: "a",
     desc: "b",
     img: "c",
     alt: "d",
-    color: "blue"
+    // color: "blue"
   }
 ]
 
@@ -29,8 +29,13 @@ function ProjectCards(props: any) {
    let cards = projects.map( (each: singleCard, index) => Card(each));
 
    return (
-    <div className="row1-container ">
-      {cards}
+    <div id="bgPC">
+      <br />
+      <br />
+      <br />
+      <div className="row1-container ">
+        {cards}
+      </div>
     </div>
    )
 }

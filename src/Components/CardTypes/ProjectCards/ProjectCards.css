@@ -12,7 +12,7 @@
     --weight1: 200;
     --weight2: 400;
     --weight3: 600;
-    --background: rgb(48, 48, 48);
+    --background: rgba(197, 197, 197, 0.986);
 }
 
 body {
@@ -156,6 +156,16 @@ h2 {
     -z-animation: rainbow 18s ease infinite;
     -o-animation: rainbow 18s ease infinite;
     animation: rainbow 18s ease infinite;
+}
+
+#bgPC {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -10;
+    background-color: var(--background);
 }
 
 @-webkit-keyframes rainbow {

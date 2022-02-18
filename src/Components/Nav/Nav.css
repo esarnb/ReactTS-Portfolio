@@ -1,5 +1,8 @@
-.navBtn {
+.navBtns {
     text-decoration: none;
+    margin-left: 1%;
+}
+.navBtnsText {
 }
 
 .darkTheme {
@@ -7,19 +10,14 @@
 }
 
 .lightTheme {
-    color: rgb(61, 61, 61);
+    color: rgb(61, 61, 61) !important;
 }
 
-#dropDownPagesNav {
-    flex-grow: 0.8;
+#navBar {
+
 }
 
-@media only screen and (min-width: 900px) {
-    #dropDownIconNav {
-        display: none;
-    }
-    
-    #dropDownPagesNav {
-        flex-grow: 0.75;
-    }
+#navMenu {
+
 }
+
