@@ -8,9 +8,11 @@ function BasicCard(props: any) {
     <Paper className="BCGit" padding={padding} shadow={shadow} radius={radius} withBorder>
       <Text size="lg" underline>{title ?? <Skeleton height={8} radius="xl" /> }</Text>
       <Text>{desc ?? <Skeleton height={8} mt={6} radius="xl" />}
-      <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
+      {
+        btnText ? <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
         {btnText}
-      </Button>
+      </Button> : <></>
+      }
       {
         link ? <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
           <Anchor href={link} target="_blank">
