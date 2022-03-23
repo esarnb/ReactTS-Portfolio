@@ -69,24 +69,4 @@ function Github() {
   );
 }
 
-const mockData = [
-  {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-        {title: "title", desc: "desc", btnText: "Repo", link: null},
-]
-
 export default Github;
