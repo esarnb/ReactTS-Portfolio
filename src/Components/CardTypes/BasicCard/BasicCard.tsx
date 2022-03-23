@@ -1,9 +1,10 @@
 import { Paper, Button, Text, Skeleton, Anchor } from "@mantine/core";
 import { BaseData } from "../../../Interfaces/Cards";
+import "../../../App.css";
 import "./BasicCard.css";
 
 function BasicCard(props: any) {
-  const { title, desc, img, alt, btnText, link, padding, shadow, radius}: BaseData = props;
+  const { title, desc, img, alt, btnText, link, updated, padding, shadow, radius}: BaseData = props;
   return (
     <Paper className="BCGit" padding={padding} shadow={shadow} radius={radius} withBorder>
       <Text size="lg" underline>{title ?? <Skeleton height={8} radius="xl" /> }</Text>
@@ -20,6 +21,10 @@ function BasicCard(props: any) {
           </Anchor>
         </Button> : <></>
       }
+      {
+        updated ? <i className="tiny float-right">Last Updated: {`${updated.getMonth()}/${updated.getDate()}/${updated.getFullYear()}`}</i> : <></>
+      }
+      
       </Text>
     </Paper>
   )

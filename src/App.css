@@ -31,3 +31,16 @@
 .hide {
     display: none;
 }
+
+.margin-right {
+    margin-left: auto; 
+    margin-right: 0;
+}
+
+.float-right {
+    float: right;
+}
+
+.tiny {
+    font-size: small;
+}
