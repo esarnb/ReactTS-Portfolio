@@ -13,17 +13,28 @@ function Github() {
 
   useEffect(() => {
 
-    fetch("https://api.github.com/users/esarnb/repos").then(res => res.json()).then(data => {
+    fetch("https://api.github.com/users/esarnb/repos?per_page=100").then(res => {
+      // console.log("Remaining Hits: ", res.headers.get("x-ratelimit-remaining"))
+      return res.json()
+    }).then(data => {
       let filtered = data.map((x: any) => {
         return {
           name: x.name, 
           repo: x.html_url, 
-          live: x.deployments_url, 
-          updated: new Date(x.updated_at)
+          live: x.homepage ?? x.homepage, 
+          updated: new Date(x.pushed_at),
+          language: x.language
         }
-      }).sort((a: gitRepo, b: gitRepo) => +a.updated - +b.updated);
-      setData(filtered.reverse());
+      }).sort((a: gitRepo, b: gitRepo) => +b.updated - +a.updated);
+      setData(filtered);
       setIsLoading(false);
+    //   let x = filtered.reduce(function (obj: any, item: any) {
+    //     obj[item.language] = obj[item.language] || [];
+    //     obj[item.language].push(item.color);
+    //     return obj;
+    // }, {});
+    // console.log(x);
+      
     });
   }, []);
 
@@ -41,9 +52,10 @@ function Github() {
 
               <Group position="center">
                 {
-                  data ? data.map(({name, repo, live, updated, description}, i: Number) => {
+                  data ? data.map(({name, repo, live, updated, description, language}, i: Number) => {
                   return <BasicCard key={"ghPkey#"+i} 
-                    title={name} desc ={description ? description : ""} btnText={repo} link={live} updated={updated}
+                    title={name} desc ={description ? description : ""} 
+                    btn={repo} link={live} updated={updated} language={language}
                     padding= "md" shadow= "md" radius= "md"/>
                   })
                   : <Button loading={isLoading} loaderPosition="right">Pulling github data...</Button> 

@@ -7,12 +7,12 @@ export interface singleCard {
   alt?: string,
   color?: string
 }
-
+ 
 export interface BaseData {
   title?: string | React.ReactElement,
   desc?: string | React.ReactElement,
-  btnText?: string,
-  link?: string | null,
+  btn?: string,
+  link?: string | undefined,
   img?: string,
   alt?: string,
   updated?: Date,
@@ -26,5 +26,6 @@ export interface gitRepo {
   description: string,    // description
   repo: string,           // html_url
   live: string            // deployments_url
+  language: string            // deployments_url
   updated: Date         // updated_at
 }
