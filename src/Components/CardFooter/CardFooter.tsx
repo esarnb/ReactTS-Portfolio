@@ -22,7 +22,7 @@ export function CardFooter(props: any) {
     return (
         <>
             {
-                updated ? <i className="tiny float-right">Last Updated: {`${updated.getMonth()}/${updated.getDate()+1}/${updated.getFullYear()}`}</i> : <></>
+                updated ? <i className="tiny float-right">Last Updated: {`${updated.getMonth()+1}/${updated.getDate()}/${updated.getFullYear()}`}</i> : <></>
                 // updated ? <i className="tiny float-right">Last Updated: {updated.toLocaleString()}</i> : <></>
             }
 
