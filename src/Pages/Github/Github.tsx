@@ -13,28 +13,25 @@ function Github() {
 
   useEffect(() => {
 
-    fetch("https://api.github.com/users/esarnb/repos?per_page=100").then(res => {
+    fetch("http://localhost:4242/github/repos").then(res => {
       // console.log("Remaining Hits: ", res.headers.get("x-ratelimit-remaining"))
       return res.json()
     }).then(data => {
+      let x: gitRepo[] = data;
+      setIsLoading(false);
       let filtered = data.map((x: any) => {
         return {
           name: x.name, 
-          repo: x.html_url, 
-          live: x.homepage ?? x.homepage, 
-          updated: new Date(x.pushed_at),
-          language: x.language
+          repo: x.repo, 
+          live: x.live ? x.live : false, 
+          updated: new Date(x.updated),
+          language: JSON.parse(x.language)
         }
       }).sort((a: gitRepo, b: gitRepo) => +b.updated - +a.updated);
-      setData(filtered);
-      setIsLoading(false);
-    //   let x = filtered.reduce(function (obj: any, item: any) {
-    //     obj[item.language] = obj[item.language] || [];
-    //     obj[item.language].push(item.color);
-    //     return obj;
-    // }, {});
+    
     // console.log(x);
-      
+      console.log(filtered);
+      setData(filtered);
     });
   }, []);
 
