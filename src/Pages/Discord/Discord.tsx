@@ -4,7 +4,7 @@ import "./Discord.css";
 
 function Discord() {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState();
+  const [data, setData] = useState({user: {tag: "Loading..."}});
 
   useEffect(() => {
 
@@ -12,7 +12,10 @@ function Discord() {
       console.log("Status: ", res.status);
       
       return res.json()
-    }).catch(err => console.error(err))
+    }).catch(err => {
+      console.error(err);
+      setData({user: {tag: "Offline."}});
+    })
     .then(data => {
       setIsLoading(false);
       setData(data);
@@ -26,7 +29,7 @@ function Discord() {
         <meta name="description" content="My Discord page through Helmet" />
       </Helmet>
       <p>
-        {JSON.stringify(data)}
+        {!(data.user.tag === "Offline" || data.user.tag === "Loading...") ? `Bot ${data.user.tag} is online!` : `Bot ${data.user.tag}`}
       </p>
     </>
   );
