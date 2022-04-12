@@ -41,7 +41,7 @@ function Discord() {
     // 5 second timeout:
     const timeoutId = setTimeout(() => controller.abort(), 5000)
 
-    fetch("http://localhost:3434/discord", { signal: controller.signal })
+    fetch("https://bot.esarnb.com/discord", { signal: controller.signal })
       .then(res => {
         // completed request before timeout fired
         

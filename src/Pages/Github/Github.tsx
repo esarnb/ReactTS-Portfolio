@@ -13,7 +13,7 @@ function Github() {
 
   useEffect(() => {
 
-    fetch("http://localhost:4242/github/repos").then(res => {
+    fetch("https://api.esarnb.com/github/repos").then(res => {
       // console.log("Remaining Hits: ", res.headers.get("x-ratelimit-remaining"))
       return res.json()
     }).then(data => {
