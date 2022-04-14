@@ -8,6 +8,7 @@ import "./App.css";
 import Nav from "./Components/Nav/Nav";
 import Theme from "./Components/Theme/Theme";
 import NoPage from "./Components/NoPage/NoPage";
+import DLogin from "./Components/DLogin/DLogin";
 import Home from "./Pages/Home/Home";
 import Portfolio from "./Pages/Portfolio/Portfolio";
 import Github from "./Pages/Github/Github";
@@ -28,6 +29,7 @@ export default function App() {
               <Route path="threejs" element={<ThreeJS />} />
               <Route path="discord" element={<Discord />} />
               <Route path="config" element={<Config />} />
+              <Route path="login" element={<DLogin />} />
               <Route path="*" element={<NoPage />} />
           </Routes>
         </BrowserRouter>
