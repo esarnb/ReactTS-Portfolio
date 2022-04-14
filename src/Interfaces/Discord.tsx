@@ -12,3 +12,24 @@ export interface userObj {
     mfa_enabled: boolean,
     premium_type: number
 }
+
+
+export interface command {
+    help: {
+      desc: string,
+      guild: boolean, 
+      locked: boolean,
+      name: string, 
+      owner: boolean, 
+      type: string,
+      usage: string,
+    }
+  }
+  
+export interface botData {
+    user: any, // discord User Object
+    users: number,
+    servers: number,
+    commands: any // command Object
+  }
+  
