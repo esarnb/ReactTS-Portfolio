@@ -1,36 +1,39 @@
-import { Helmet } from "react-helmet";
-import { useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from 'react-router-dom'
-import { DiscordActionEnum, DiscordReducer, userObj } from "../../Interfaces/Discord";
+import { DiscordActionEnum, userObj } from "../../Interfaces/Discord";
 import DiscordUser from "../../Components/DiscordUser/DiscordUser";
 import DiscordBot from "../../Components/DiscordBot/DiscordBot";
+import { DiscordContext } from "../../Contexts/DiscordContext";
+import { Helmet } from "react-helmet";
 import "./Discord.css";
 
+const oauthURL = "https://discord.com/api/oauth2/authorize?client_id=343831827963838475&redirect_uri=https%3A%2F%2Fesarnb.com%2Fdiscord&response_type=code&scope=identify";
 export default function Discord() {
-
-    const [searchParams] = useSearchParams();
-    const code = searchParams.get('code');
-
+    const { state, dispatch } = useContext(DiscordContext);
     const [userData, setUserData] = useState<userObj>();
-    const [state, dispatch] = useReducer(DiscordReducer, { code: null });
-    const oauthURL = "https://discord.com/api/oauth2/authorize?client_id=343831827963838475&redirect_uri=https%3A%2F%2Fesarnb.com%2Fdiscord&response_type=code&scope=identify";
+    const [searchParams, setSearchParams] = useSearchParams();
+    const code = searchParams.get('code');
 
     useEffect(() => {
         console.log("State", state);
         console.log("Code", code);
 
         if (state.code || code) {
-            if (!state.code && code) {
-                dispatch({ type: DiscordActionEnum.setCode, payload: code });
-                console.log("EXECUTED DISPATCH", DiscordActionEnum.setCode, code);
-                
-            }
-            searchParams.delete('code');
-            console.log(state);
+            if (!state.code && code) dispatch({ type: DiscordActionEnum.setCode, payload: code });
             
             fetch("https://api.esarnb.com/discord?code=" + (state.code ?? code)).then((res) => res.json()).then((data: userObj) => {
                 setUserData(data);
             }).catch(err => console.error(err));
+
+            searchParams.delete("code");
+            setSearchParams(searchParams);
+
+            if (state.code) {
+                console.log("STATEFUL FETCHING");
+                fetch("https://api.esarnb.com/discord?code=" + state.code).then((res) => res.json()).then((data: userObj) => {
+                    console.log("STATEFUL FETCH", data);
+                }).catch(err => console.error(err));
+            }
         }
     }, [])
     return (

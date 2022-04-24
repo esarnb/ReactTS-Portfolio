@@ -23,26 +23,12 @@ export interface DiscordActionI {
   payload: string
 }
 
-export interface DiscordAuthState {
+export interface DiscordAuthStateType {
   code: string | null
 }
 
-export function DiscordReducer(state: DiscordAuthState, action: DiscordActionI) {
-  const {type, payload} = action;
-  switch (type) {
-    case DiscordActionEnum.setCode:
-      return {
-        ...state, value: payload 
-      }
-
-    case DiscordActionEnum.clearCode:
-      return {
-        ...state, value: null 
-      }
-
-    default: return state;
-
-  }
+export const DiscordAuthInitial = {
+  code: null
 }
 
 

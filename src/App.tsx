@@ -1,8 +1,5 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { DiscordProvider } from "./Contexts/DiscordContext";
 import "./App.css";
 
 import Nav from "./Components/Nav/Nav";
@@ -17,21 +14,21 @@ import Config from "./Pages/Config/Config";
 
 export default function App() {
   return (
-    <>
-      <Theme>
-        <BrowserRouter>
+    <DiscordProvider>
+      <BrowserRouter>
+        <Theme> 
           <Nav />
           <Routes>
-              <Route index element={<Home />} />
-              <Route path="portfolio" element={<Portfolio />} />
-              <Route path="github" element={<Github />} />
-              <Route path="threejs" element={<ThreeJS />} />
-              <Route path="discord" element={<Discord />} />
-              <Route path="config" element={<Config />} />
-              <Route path="*" element={<NoPage />} />
+            <Route index element={<Home />} />
+            <Route path="portfolio" element={<Portfolio />} />
+            <Route path="github" element={<Github />} />
+            <Route path="threejs" element={<ThreeJS />} />
+            <Route path="discord" element={<Discord />} />
+            <Route path="config" element={<Config />} />
+            <Route path="*" element={<NoPage />} />
           </Routes>
-        </BrowserRouter>
-      </Theme>
-    </>
+        </Theme>  
+      </BrowserRouter>
+    </DiscordProvider>
   );
 }
