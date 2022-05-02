@@ -39,7 +39,14 @@ export const DiscordAuthInitial = {
   locale: null,
 }
 
-
+export const DiscordAuthMock = {
+  id: '251091302303662080',
+  username: 'EmperorSR',
+  avatar: 'a_a58e3a79b9d27d6935b2fdab97a71b48',
+  banner: 'a_fff1131c682c1f4e08a5da02040eba9d',
+  locale: 'en-US',
+}
+  
 // export interface command {
 //   help: {
 //     desc: string,
