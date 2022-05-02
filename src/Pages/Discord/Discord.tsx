@@ -36,7 +36,7 @@ export default function Discord() {
             {
                 state?.id ? <DiscordUser userData={state} dev={dev}/> :
                 <a href={oauthURL}>
-                    <button>
+                    <button className="centerDiv" >
                         Login to Discord
                     </button>
                 </a>
