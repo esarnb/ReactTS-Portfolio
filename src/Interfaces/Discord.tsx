@@ -14,21 +14,29 @@ export interface userObj {
 }
 
 export enum DiscordActionEnum {
-  setCode = "SETCODE",
-  clearCode = "CLEARCODE"
+  setData = "SETDATA",
+  clearData = "CLEARDATA"
 }
 
 export interface DiscordActionI {
   type: DiscordActionEnum,
-  payload: string
+  payload: DiscordAuthStateType
 }
 
 export interface DiscordAuthStateType {
-  code: string | null
+  id: string | null,
+  username: string | null,
+  avatar: string | null,
+  banner: string | null,
+  locale: string | null,
 }
 
 export const DiscordAuthInitial = {
-  code: null
+  id: null,
+  username: null,
+  avatar: null,
+  banner: null,
+  locale: null,
 }
 
 

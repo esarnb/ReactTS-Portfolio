@@ -1,11 +1,12 @@
-import { userObj } from "../../Interfaces/Discord";
+import { DiscordAuthStateType } from "../../Interfaces/Discord";
 import "./DiscordUser.css";
 
-export default function DiscordUser({ userData }: any) {
-    const user: userObj = userData
+export default function DiscordUser({userData}: {userData: DiscordAuthStateType}) {
+    console.log(userData);
+    
     return (
         <h1>
-            Welcome, {user.username}! 
+            Welcome, {userData.username}! 
         </h1>
     )
 }

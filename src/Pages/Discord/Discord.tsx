@@ -10,32 +10,20 @@ import "./Discord.css";
 const oauthURL = "https://discord.com/api/oauth2/authorize?client_id=343831827963838475&redirect_uri=https%3A%2F%2Fesarnb.com%2Fdiscord&response_type=code&scope=identify";
 export default function Discord() {
     const { state, dispatch } = useContext(DiscordContext);
-    const [userData, setUserData] = useState<userObj>();
     const [searchParams, setSearchParams] = useSearchParams();
     const code = searchParams.get('code');
 
     useEffect(() => {
-        console.log("State", state);
-        console.log("Code", code);
-
-        if (state.code || code) {
-            if (!state.code && code) dispatch({ type: DiscordActionEnum.setCode, payload: code });
-            
-            fetch("https://api.esarnb.com/discord?code=" + (state.code ?? code)).then((res) => res.json()).then((data: userObj) => {
-                setUserData(data);
+        if (code) {
+            fetch("https://api.esarnb.com/discord?code=" + code).then((res) => res.json()).then((data: userObj) => {
+                if (data) dispatch({ type: DiscordActionEnum.setData, payload: data });
             }).catch(err => console.error(err));
-
-            searchParams.delete("code");
-            setSearchParams(searchParams);
-
-            if (state.code) {
-                console.log("STATEFUL FETCHING");
-                fetch("https://api.esarnb.com/discord?code=" + state.code).then((res) => res.json()).then((data: userObj) => {
-                    console.log("STATEFUL FETCH", data);
-                }).catch(err => console.error(err));
-            }
         }
-    }, [])
+        
+        searchParams.delete("code");
+        setSearchParams(searchParams);
+    }, []);
+
     return (
         <>
             <Helmet>
@@ -44,14 +32,13 @@ export default function Discord() {
             </Helmet>
             <DiscordBot />
             {
-                userData ? <DiscordUser userData={userData} /> :
+                state?.id ? <DiscordUser userData={state} /> :
                 <a href={oauthURL}>
                     <button>
                         Login to Discord
                     </button>
                 </a>
             }
-            <p>{state.code}</p>
         </>
     )
 }
