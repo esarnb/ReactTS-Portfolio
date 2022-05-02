@@ -7,8 +7,9 @@ export default function DiscordUser({userData, dev}: {userData: DiscordAuthState
     if (avatar) avatar = `https://cdn.discordapp.com/avatars/${id}/${avatar}.${avatar?.startsWith("a_") ? "gif" : "png"}`
     if (banner) banner = `https://cdn.discordapp.com/banners/${id}/${banner}.${banner?.startsWith("a_") ? "gif" : "png"}`
     return (
-        <h1>
-            {dev ? "DEV MODE TRUE" : ""}
+        <h1 className="center">
+            <p>{dev ? "DEV MODE TRUE" : ""}</p>
+            <br />
             Welcome, {username}!
             <p>ID: {id}</p>
             <p>Locale: {locale}</p>
