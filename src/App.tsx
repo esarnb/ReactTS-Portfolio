@@ -15,7 +15,6 @@ export default function App() {
 
   const PageButtons = () => pages.map((x: any, index: number) =>
     <UnstyledButton className={classes.control}><NavLink
-      href={x.path}
       label={x.label}
       leftSection={x.icon}
       description={x.description}
