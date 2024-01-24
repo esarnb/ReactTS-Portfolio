@@ -12,6 +12,7 @@ const pages = [
   {path: "/threejs", name: "ThreeJS"},
   {path: "/discord", name: "Discord"},
   {path: "/config", name: "Config"},
+  {path: "https://mc.esarnb.com", name: "MC"},
 ];
 
 export default function Nav() {
@@ -20,9 +21,13 @@ export default function Nav() {
     <span style={{width: "fit-content"}} ref={headerRef}>
       {
         pages.map(({path, name}, i) => {
-          return <Anchor key={"navBtnKey#"+i} className="navBtnsText" component={Link} to={path}>
+          return path.startsWith("/") ? <Anchor key={"navBtnKey#"+i} className="navBtnsText" component={Link} to={path}>
+          <Button variant="outline" className="navBtns">
+            {name}
+          </Button>
+        </Anchor> : <Anchor key={"navBtnKey#"+i} className="navBtnsText" href={path} target="_blank">
             <Button variant="outline" className="navBtns">
-              {name}
+              <span className='newTabIcon'>{name}</span> 
             </Button>
           </Anchor>
         })
