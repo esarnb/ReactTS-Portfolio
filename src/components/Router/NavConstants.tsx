@@ -1,6 +1,7 @@
-import { NotFound, PageNotReady } from "../components/NotFound/NotFound";
-import CodeHighlightExample from '../components/CodeHighlightExample/CodeHighlightExample'
-import Home from "../pages/Home/Home";
+import { NotFound, PageNotReady } from "../NotFound/NotFound";
+import CodeHighlightExample from '../CodeHighlightExample/CodeHighlightExample'
+import PrinterModels from '../PrinterModels/PrinterModels';
+import Home from "../../pages/Home/Home";
 
 const pages = [
     {
@@ -40,19 +41,12 @@ const pages = [
     },
     {
         path: '/3d',
-        element: <PageNotReady />,
+        element: <PrinterModels />,
         label: "3D Models",
         icon: null,
         description: null
         // description: "Printed Models from 3D Printer"
-    },
-    {
-        path: '*',
-        element: <NotFound />,
-        label: null,
-        icon: null,
-        description: null
-    },
+    }
 ];
 
 export {

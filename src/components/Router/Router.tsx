@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { pages } from '../../constants/Nav';
+import { pages } from './NavConstants';
 
 const router = createBrowserRouter(pages);
 export function Router() {

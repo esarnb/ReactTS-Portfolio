@@ -6,7 +6,7 @@ import { MantineProvider, AppShell, Burger, Group, NavLink, UnstyledButton } fro
 import { Router } from './components/Router/Router';
 import { useDisclosure } from '@mantine/hooks';
 import { ColorSchemeToggle } from './components/ColorSchemeToggle/ColorSchemeToggle';
-import { pages } from './constants/Nav';
+import { pages } from './components/Router/NavConstants';
 import classes from './App.module.css';
 
 export default function App() {
