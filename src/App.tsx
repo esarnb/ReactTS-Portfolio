@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import '@mantine/core/styles.css';
+import { useState } from 'react';
+import { AppShell, Burger, Group, MantineProvider, NavLink, UnstyledButton } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import classes from './App.module.css';
+import { pages } from './constants/Nav';
+import { ColorSchemeToggle } from './components/ColorSchemeToggle/ColorSchemeToggle';
+import { Router } from './components/Router/Router';
+import { theme } from './components/Theme/theme';
+
+export default function App() {
+  const [active, setActive] = useState(0);
+  const [opened, { toggle }] = useDisclosure();
+
+  const PageButtons = () => pages.map((x: any, index: number) =>
+    <UnstyledButton className={classes.control}><NavLink
+      href={x.path}
+      label={x.label}
+      leftSection={x.icon}
+      description={x.description}
+      active={index === active}
+      onClick={() => setActive(index)}
+    /></UnstyledButton>
+  );
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <MantineProvider theme={theme}>
+        <AppShell
+          header={{ height: 60 }}
+          navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
+          padding="md"
+        >
+          <AppShell.Header>
+            <Group h="100%" px="sm">
+              <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+              <Group justify="space-between" style={{ flex: 1 }}>
+                <Group ml="sm" gap={0} visibleFrom="sm">
+                  <PageButtons />
+                </Group>
+                <ColorSchemeToggle />
+              </Group>
+            </Group>
+          </AppShell.Header>
+          <AppShell.Navbar py="md" px={4}>
+            <PageButtons />
+          </AppShell.Navbar>
+          <AppShell.Main>
+            <Router />
+          </AppShell.Main>
+        </AppShell>
+      </MantineProvider>
 
-export default App
+    </>
+  );
+}
