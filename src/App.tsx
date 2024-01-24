@@ -8,6 +8,7 @@ import { pages } from './constants/Nav';
 import { ColorSchemeToggle } from './components/ColorSchemeToggle/ColorSchemeToggle';
 import { Router } from './components/Router/Router';
 import { theme } from './components/Theme/theme';
+import { Link } from 'react-router-dom';
 
 export default function App() {
   const [active, setActive] = useState(0);
@@ -20,7 +21,9 @@ export default function App() {
       description={x.description}
       active={index === active}
       onClick={() => setActive(index)}
-    /></UnstyledButton>
+    />
+      <Link to={x.path} />
+    </UnstyledButton>
   );
 
   return (
@@ -46,7 +49,7 @@ export default function App() {
             <PageButtons />
           </AppShell.Navbar>
           <AppShell.Main>
-            {pages[active].element}
+            <Router />
           </AppShell.Main>
         </AppShell>
       </MantineProvider>
