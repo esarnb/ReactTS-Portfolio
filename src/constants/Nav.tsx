@@ -1,4 +1,5 @@
 import { NotFound, PageNotReady } from "../components/NotFound/NotFound";
+import CodeHighlightExample from '../components/CodeHighlightExample/CodeHighlightExample'
 import Home from "../pages/Home/Home";
 
 const pages = [
@@ -11,7 +12,7 @@ const pages = [
     },
     {
         path: '/codes',
-        element: <PageNotReady />,
+        element: <CodeHighlightExample />,
         label: "Code",
         icon: null,
         description: null

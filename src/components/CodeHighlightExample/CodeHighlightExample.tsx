@@ -1,59 +1,54 @@
-import { CodeHighlight } from '@mantine/code-highlight';
+import { CodeHighlightTabs } from '@mantine/code-highlight';
 
-const exampleCode = `
-// VisuallyHidden component source code
-import React from 'react';
-import {
-  Box,
-  BoxProps,
-  StylesApiProps,
-  factory,
-  ElementProps,
-  useProps,
-  useStyles,
-  Factory,
-} from '../../core';
-import classes from './VisuallyHidden.module.css';
+const tsxCode = `
+import { Group, Button, MantineProvider, createTheme } from '@mantine/core';
+import classes from './Demo.module.css';
 
-export type VisuallyHiddenStylesNames = 'root';
-
-export interface VisuallyHiddenProps
-  extends BoxProps,
-    StylesApiProps<VisuallyHiddenFactory>,
-    ElementProps<'div'> {}
-
-export type VisuallyHiddenFactory = Factory<{
-  props: VisuallyHiddenProps;
-  ref: HTMLDivElement;
-  stylesNames: VisuallyHiddenStylesNames;
-}>;
-
-const defaultProps: Partial<VisuallyHiddenProps> = {};
-
-export const VisuallyHidden = factory<VisuallyHiddenFactory>((_props, ref) => {
-  const props = useProps('VisuallyHidden', defaultProps, _props);
-  const { classNames, className, style, styles, unstyled, vars, ...others } = props;
-
-  const getStyles = useStyles<VisuallyHiddenFactory>({
-    name: 'VisuallyHidden',
-    classes,
-    props,
-    className,
-    style,
-    classNames,
-    styles,
-    unstyled,
-  });
-
-  return <Box component="span" ref={ref} {...getStyles('root')} {...others} />;
+const theme = createTheme({
+  components: {
+    Button: Button.extend({
+      classNames: classes,
+    }),
+  },
 });
 
-VisuallyHidden.classes = classes;
-VisuallyHidden.displayName = '@mantine/core/VisuallyHidden';
+function Demo() {
+  return (
+    <MantineProvider theme={theme}>
+      <Group>
+        <Button variant="danger">Danger variant</Button>
+        <Button variant="primary">Primary variant</Button>
+      </Group>
+    </MantineProvider>
+  );
+}
 `;
 
-function Demo() {
-  return <CodeHighlight code={exampleCode} language="tsx" />;
-}
+const cssCode = `
+.root {
+  &[data-variant='danger'] {
+    background-color: var(--mantine-color-red-9);
+    color: var(--mantine-color-red-0);
+  }
 
-export default Demo;
+  &[data-variant='primary'] {
+    background: linear-gradient(45deg, #4b6cb7 10%, #253b67 90%);
+    color: var(--mantine-color-white);
+  }
+}
+`;
+
+export default function() {
+  return (
+    <CodeHighlightTabs
+      withExpandButton
+      defaultExpanded={false}
+      expandCodeLabel="Show full code"
+      collapseCodeLabel="Show less"
+      code={[
+        { fileName: 'Demo.tsx', code: tsxCode, language: 'tsx' },
+        { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+      ]}
+    />
+  );
+}

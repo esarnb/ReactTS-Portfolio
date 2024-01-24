@@ -1,26 +1,23 @@
 
 import '@mantine/core/styles.css';
-import { useState } from 'react';
-import { AppShell, Burger, Group, MantineProvider, NavLink, UnstyledButton } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import classes from './App.module.css';
-import { pages } from './constants/Nav';
-import { ColorSchemeToggle } from './components/ColorSchemeToggle/ColorSchemeToggle';
-import { Router } from './components/Router/Router';
 import { theme } from './components/Theme/theme';
+import '@mantine/code-highlight/styles.css';
+import { MantineProvider, AppShell, Burger, Group, NavLink, UnstyledButton } from '@mantine/core';
+import { Router } from './components/Router/Router';
+import { useDisclosure } from '@mantine/hooks';
+import { ColorSchemeToggle } from './components/ColorSchemeToggle/ColorSchemeToggle';
+import { pages } from './constants/Nav';
+import classes from './App.module.css';
 
 export default function App() {
-  const [active, setActive] = useState(0);
   const [opened, { toggle }] = useDisclosure();
-
-  const PageButtons = () => pages.map((x: any, index: number) =>
+  const PageButtons = () => pages.map(x =>
     <UnstyledButton className={classes.control}><NavLink
       href={x.path}
       label={x.label}
       leftSection={x.icon}
       description={x.description}
       active={window.location.pathname === x.path}
-      onClick={() => setActive(index)}
     /></UnstyledButton>
   );
 
@@ -30,8 +27,8 @@ export default function App() {
         <AppShell
           header={{ height: 60 }}
           navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
-          padding="md"
-        >
+          padding="md">
+
           <AppShell.Header>
             <Group h="100%" px="sm">
               <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
@@ -45,15 +42,18 @@ export default function App() {
               </Group>
             </Group>
           </AppShell.Header>
+          
           <AppShell.Navbar py="md" px={4}>
             <PageButtons />
           </AppShell.Navbar>
+          
           <AppShell.Main>
             <Router />
           </AppShell.Main>
+        
         </AppShell>
       </MantineProvider>
-
     </>
+
   );
 }
