@@ -46,7 +46,7 @@ export default function App() {
             <PageButtons />
           </AppShell.Navbar>
           <AppShell.Main>
-            <Router />
+            {pages[active].element}
           </AppShell.Main>
         </AppShell>
       </MantineProvider>
