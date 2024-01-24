@@ -8,7 +8,6 @@ import { pages } from './constants/Nav';
 import { ColorSchemeToggle } from './components/ColorSchemeToggle/ColorSchemeToggle';
 import { Router } from './components/Router/Router';
 import { theme } from './components/Theme/theme';
-import { Link } from 'react-router-dom';
 
 export default function App() {
   const [active, setActive] = useState(0);
@@ -16,14 +15,13 @@ export default function App() {
 
   const PageButtons = () => pages.map((x: any, index: number) =>
     <UnstyledButton className={classes.control}><NavLink
+      href={x.path}
       label={x.label}
       leftSection={x.icon}
       description={x.description}
-      active={index === active}
+      active={window.location.pathname === x.path}
       onClick={() => setActive(index)}
-    />
-      <Link to={x.path} />
-    </UnstyledButton>
+    /></UnstyledButton>
   );
 
   return (
@@ -41,7 +39,9 @@ export default function App() {
                 <Group ml="sm" gap={0} visibleFrom="sm">
                   <PageButtons />
                 </Group>
-                <ColorSchemeToggle />
+                <Group justify="right" style={{ flex: 1 }}>
+                  <ColorSchemeToggle />
+                </Group>
               </Group>
             </Group>
           </AppShell.Header>
