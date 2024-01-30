@@ -1,6 +1,6 @@
 import { PageNotReady } from "../NotFound/NotFound";
 import CodeHighlightExample from '../CodeHighlightExample/CodeHighlightExample'
-import PrinterModels from '../PrinterModels/PrinterModels';
+import Prints from '../../pages/Prints/Prints';
 import Home from "../../pages/Home/Home";
 
 const pages = [
@@ -41,7 +41,7 @@ const pages = [
     },
     {
         path: '/3d',
-        element: <PrinterModels />,
+        element: <Prints />,
         label: "3D Models",
         icon: null,
         description: null
