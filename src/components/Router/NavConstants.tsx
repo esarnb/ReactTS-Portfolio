@@ -1,4 +1,4 @@
-import { NotFound, PageNotReady } from "../NotFound/NotFound";
+import { PageNotReady } from "../NotFound/NotFound";
 import CodeHighlightExample from '../CodeHighlightExample/CodeHighlightExample'
 import PrinterModels from '../PrinterModels/PrinterModels';
 import Home from "../../pages/Home/Home";
