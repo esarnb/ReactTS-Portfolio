@@ -2,7 +2,7 @@ import { Card, Image, Text } from '@mantine/core';
 import "./Card.css";
 
 
-export default function Cards({ image, title, description, category }: any) {
+export default function Cards({ image, title, description }: any) {
   return (
     <Card
       shadow="sm"

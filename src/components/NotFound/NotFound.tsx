@@ -3,7 +3,7 @@ import './NotFound.css'
 function NotFound() {
   return (
     <>
-        Page not 
+        Page not found
     </>
   )
 }
@@ -16,6 +16,14 @@ function PageNotReady() {
       )
 }
 
+function PageNeedsAPI() {
+  return (
+    <>
+      Page needs API / Database connection.
+    </>
+  )
+}
+
 export {
-    NotFound, PageNotReady
+    NotFound, PageNotReady, PageNeedsAPI
 }

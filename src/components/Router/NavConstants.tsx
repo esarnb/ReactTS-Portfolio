@@ -1,4 +1,4 @@
-import { PageNotReady } from "../NotFound/NotFound";
+import { PageNeedsAPI, PageNotReady } from "../NotFound/NotFound";
 import CodeHighlightExample from '../CodeHighlightExample/CodeHighlightExample'
 import Prints from '../../pages/Prints/Prints';
 import Home from "../../pages/Home/Home";
@@ -20,7 +20,7 @@ const pages = [
     },
     {
         path: '/github',
-        element: <PageNotReady />,
+        element: <PageNeedsAPI />,
         label: "Github",
         icon: null,
         description: null
@@ -34,7 +34,7 @@ const pages = [
     },
     {
         path: '/mc',
-        element: <PageNotReady />,
+        element: <PageNeedsAPI />,
         label: "Minecraft",
         icon: null,
         description: null
