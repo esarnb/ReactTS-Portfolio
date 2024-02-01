@@ -1,0 +1,14 @@
+.elements-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+/* 
+.center::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+*/

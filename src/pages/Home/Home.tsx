@@ -1,18 +1,10 @@
-import { useState } from 'react'
-import './Home.module.css'
+import './Home.css'
 
 function Home() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        Home
+      <div className='parent-center'>
+        <span className='elements-center'>Welcome to my bland website</span>
       </div>
-      <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-    </>
   )
 }
 
