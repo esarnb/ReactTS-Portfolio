@@ -1,5 +1,6 @@
 import { PageNeedsAPI, PageNotReady } from "../NotFound/NotFound";
 import CodeHighlightExample from '../CodeHighlightExample/CodeHighlightExample'
+import MC from '../../pages/MC/MC'
 import Prints from '../../pages/Prints/Prints';
 import Home from "../../pages/Home/Home";
 
@@ -34,7 +35,7 @@ const pages = [
     },
     {
         path: '/mc',
-        element: <PageNeedsAPI />,
+        element: <MC />,
         label: "Minecraft",
         icon: null,
         description: null

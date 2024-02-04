@@ -1,0 +1,27 @@
+.item {
+    
+}
+
+.tinyText {
+    font-size: 10px;
+}
+
+.superTinyText {
+    width: max-content;
+    font-size: 8px;
+}
+
+.outer {
+    position: relative;
+    margin-top: 20px;
+}
+
+.top {
+    position: absolute;
+    margin-top: 20px;
+}
+
+.bottom {
+    position: absolute;
+    margin-top: 5px;
+}

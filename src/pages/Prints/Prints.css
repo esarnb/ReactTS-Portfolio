@@ -3,7 +3,10 @@
   flex-wrap: wrap;
   padding: 5px;
   justify-content: space-evenly;
+  flex-direction: row;
+  row-gap: 15px;
+  flex-basis: 0;
 }
 .item {
-  margin: 5px;
+  gap: 15px;
 }

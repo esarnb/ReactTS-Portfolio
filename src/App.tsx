@@ -31,9 +31,9 @@ export default function App() {
 
           <AppShell.Header>
             <Group h="100%" px="sm">
-              <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+              <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm" />
               <Group justify="space-between" style={{ flex: 1 }}>
-                <Group ml="sm" gap={0} visibleFrom="sm">
+                <Group ml="sm" gap={0} visibleFrom="md">
                   <PageButtons />
                 </Group>
                 <Group justify="right" style={{ flex: 1 }}>
