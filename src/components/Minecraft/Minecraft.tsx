@@ -11,7 +11,11 @@ export default function Minecraft({ checks }: any) {
     useEffect(() => {
         async function fetchMyAPI() {
             try {
-                let response = await fetch('127.0.0.1:4242/MC/servers', { mode: 'cors' })
+                let response = await fetch('https://api.esarnb.com/MC/servers', {
+                    headers:{
+                        'Accept': 'application/json',
+                    }
+                });
                 let result = await response.json();
                 setServerStatus(result)
             } catch (err) {
@@ -30,7 +34,7 @@ export default function Minecraft({ checks }: any) {
                     return <Card
                         className="item"
                         image={`/servers/${x}.png`}
-                        imgSize={180}
+                        imgSize={200}
                         title={formatTitle(i, serverStatus?.[i])}
                         description={formatStats(serverStatus?.[i])}>
                     </Card>
@@ -56,7 +60,8 @@ function formatStats(serverStatus?: ServerInfo) {
             <p>Players Online: {serverStatus.current.onlinePlayerCount} </p>
             {serverStatus.current.onlinePlayerCount ? <p>Players: {serverStatus.current.players.map(x => x.name).join(", ")} </p> : null}
             <p>CPU: {Math.round(+serverStatus.usage.cpu)}% </p>
-            <p>Mem: {Math.round(+serverStatus.usage.memory)}% </p>
+            <p>Mem: {Math.round(+serverStatus.usage.memory)}% | {(((+serverStatus.usage.memory * +serverStatus.info.memory)/100)/1024).toFixed(3)}gb/{(+serverStatus.info.memory/1024).toFixed(3)}gb</p> 
         </>
     )
 }
+    

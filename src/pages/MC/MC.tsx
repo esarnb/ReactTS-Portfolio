@@ -11,8 +11,8 @@ export default function MC() {
 
     useEffect(() => {
         const timerId = setInterval(async () => {
-            setChecks((x) => x + 5);
-        }, 5000);
+            setChecks((x) => x + 1);
+        }, 1000);
         console.log(timerId);
 
         return function cleanup() {
@@ -24,21 +24,29 @@ export default function MC() {
     useEffect(() => {
         async function fetchMyAPI() {
             try {
-                let response = await fetch('127.0.0.1:4242/MC')
-                let result = await response.text() == "hi"
+                let response = await fetch('https://api.esarnb.com/', {
+                    headers:{
+                      "Accept": 'text/html',
+                    }
+                });
+                let result = await response.text()
+                setAPICheck(result === "I exist.")
+            } catch (err) {
+                console.error(err);
+                setAPICheck(false);
+            }
+
+            try {
+                let response = await fetch('https://api.esarnb.com/MC', {
+                    headers:{
+                        "Accept": 'text/html',
+                    }
+                });
+                let result = await response.text() === "hi"
                 setDediState(result)
             } catch (err) {
                 console.error(err);
                 setDediState(false);
-            }
-
-            try {
-                let response = await fetch('127.0.0.1:4242', {mode: 'cors'})
-                let result = await response.text() == "I exist."                
-                setAPICheck(result)
-            } catch (err) {
-                console.error(err);
-                setAPICheck(false);
             }
         }
         fetchMyAPI()
@@ -52,10 +60,7 @@ export default function MC() {
                     <span className="tinyText top">[{secondsToTime(checks)}]</span>
                 </h2>
             </div>
-            {JSON.stringify({server: dediState, api: apiCheck})}
-
-                <Minecraft checks={checks}/>            
-
+            <Minecraft checks={checks}/>            
         </>
         
     );
