@@ -10,10 +10,11 @@ export default function MC() {
     const [checks, setChecks] = useState(0);
 
     useEffect(() => {
+        
         const timerId = setInterval(async () => {
             setChecks((x) => x + 1);
         }, 1000);
-        console.log(timerId);
+
 
         return function cleanup() {
             console.log(`Clearing ${timerId}`);
@@ -36,31 +37,34 @@ export default function MC() {
                 setAPICheck(false);
             }
 
-            try {
-                let response = await fetch('https://api.esarnb.com/MC', {
-                    headers:{
-                        "Accept": 'text/html',
-                    }
-                });
-                let result = await response.text() === "hi"
-                setDediState(result)
-            } catch (err) {
-                console.error(err);
-                setDediState(false);
-            }
         }
         fetchMyAPI()
     }, [checks])
 
+    const  mcServerUpdater = async () => {
+        try {
+            let response = await fetch('https://api.esarnb.com/MC', {
+                headers:{
+                    "Accept": 'text/html',
+                }
+            });
+            let result = await response.text() === "hi"
+            setDediState(result)
+        } catch (err) {
+            console.error(err);
+            setDediState(false);
+        }
+    }
+
     return (
         <>
-            <div className="container">
+            <div className="mc-container">
                 <h2 className="outer">Dedicated Server {dediState === undefined ? <Loader size={20} /> : dediState ? "🟢" : "🔴"}
                     <span className="superTinyText bottom">API Check: {apiCheck === undefined ? <Loader size={9} /> : apiCheck ?  "🟢" : "🔴"}</span>
                     <span className="tinyText top">[{secondsToTime(checks)}]</span>
                 </h2>
             </div>
-            <Minecraft checks={checks}/>            
+            <Minecraft healthCheck={mcServerUpdater}/>            
         </>
         
     );

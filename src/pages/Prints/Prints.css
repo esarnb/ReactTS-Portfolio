@@ -1,4 +1,4 @@
-.container {
+.print-container {
   display: flex;
   flex-wrap: wrap;
   padding: 5px;
@@ -7,6 +7,6 @@
   row-gap: 15px;
   flex-basis: 0;
 }
-.item {
+.print-item {
   gap: 15px;
 }

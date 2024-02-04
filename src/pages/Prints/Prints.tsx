@@ -13,11 +13,11 @@ const data = Array.from({length: 45}, () => (
 
 export default function Prints() {
   return (
-     <div className='container'>
+     <div className='print-container'>
       {
      data.map((details, index) => {
        return (
-            <Card className="item" 
+            <Card className="print-item" 
               image= {`/printed/${index}.jpg`}
               title={details.title}
               description={details.description}

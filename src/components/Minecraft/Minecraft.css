@@ -1,0 +1,19 @@
+
+.mc-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    padding: 5px;
+    column-gap: 30px;
+  }
+
+.mc-item {
+    
+    /* gap: 50px; */
+}
+
+.mc-container > .mantine-cards   {
+    width: 16%;
+    height: fit-content;
+}
