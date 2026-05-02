@@ -1,0 +1,28 @@
+.elements-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+/* 
+.center::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+*/
+
+.text-big{
+    font-size: large;
+    /* margin-top: 1% */
+}
+
+.text-tiny {
+    font-size: xx-small;
+    /* margin-top: 1% */
+}
+.text-bottom {
+    font-size: small;
+    /* margin-top: 4% */
+}

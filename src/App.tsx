@@ -1,34 +1,63 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { DiscordProvider } from "./Contexts/DiscordContext";
-import "./App.css";
 
-import Nav from "./Components/Nav/Nav";
-import Theme from "./Components/Theme/Theme";
-import NoPage from "./Components/NoPage/NoPage";
-import Home from "./Pages/Home/Home";
-import Portfolio from "./Pages/Portfolio/Portfolio";
-import Github from "./Pages/Github/Github";
-import ThreeJS from "./Pages/ThreeJS/ThreeJS";
-import Discord from "./Pages/Discord/Discord";
-import Config from "./Pages/Config/Config";
+import '@mantine/core/styles.css';
+import { theme } from './components/Theme/theme';
+import '@mantine/code-highlight/styles.css';
+import { MantineProvider, AppShell, Burger, Group, NavLink, UnstyledButton } from '@mantine/core';
+import { Router } from './components/Router/Router';
+import { useDisclosure } from '@mantine/hooks';
+import { ColorSchemeToggle } from './components/ColorSchemeToggle/ColorSchemeToggle';
+import { pages } from './components/Router/NavConstants';
+import classes from './App.module.css';
 
 export default function App() {
+  const [opened, { toggle }] = useDisclosure();
+  const PageButtons = () => pages.map((x, index) =>
+    <UnstyledButton 
+      key={"NavItem#"+index}
+      className={classes.control}>
+        <NavLink
+          href={x.path}
+          label={x.label}
+          leftSection={x.icon}
+          description={x.description}
+          active={window.location.pathname === x.path}
+        />
+      </UnstyledButton>
+  );
+
   return (
-    <DiscordProvider>
-      <BrowserRouter>
-        <Theme> 
-          <Nav />
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path="portfolio" element={<Portfolio />} />
-            <Route path="github" element={<Github />} />
-            <Route path="threejs" element={<ThreeJS />} />
-            <Route path="discord" element={<Discord />} />
-            <Route path="config" element={<Config />} />
-            <Route path="*" element={<NoPage />} />
-          </Routes>
-        </Theme>  
-      </BrowserRouter>
-    </DiscordProvider>
+    <>
+      <MantineProvider theme={theme}>
+        <AppShell
+          header={{ height: 60 }}
+          navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
+          padding="md">
+
+          <AppShell.Header>
+            <Group h="100%" px="sm">
+              <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm" />
+              <Group justify="space-between" style={{ flex: 1 }}>
+                <Group ml="sm" gap={0} visibleFrom="md">
+                  <PageButtons />
+                </Group>
+                <Group justify="right" style={{ flex: 1 }}>
+                  <ColorSchemeToggle />
+                </Group>
+              </Group>
+            </Group>
+          </AppShell.Header>
+          
+          <AppShell.Navbar py="md" px={4}>
+            <PageButtons />
+          </AppShell.Navbar>
+          
+          <AppShell.Main>
+            <Router />
+          </AppShell.Main>
+        
+        </AppShell>
+      </MantineProvider>
+    </>
+
   );
 }
