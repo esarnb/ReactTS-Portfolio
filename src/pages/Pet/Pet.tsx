@@ -48,6 +48,7 @@ export default function Pet() {
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [pendingLogin, setPendingLogin] = useState<{
     username: string;
+    localData: PetState;
     serverData: PetState | null;
   } | null>(null);
   const [isSwitching, setIsSwitching] = useState(false);
@@ -228,7 +229,7 @@ export default function Pet() {
           console.log(
             `[Login] Conflict detected: showing modal for conflict resolution`
           );
-          setPendingLogin({ username, serverData: cloudState });
+          setPendingLogin({ username, localData: localState, serverData: cloudState });
           return;
         }
       }
@@ -255,14 +256,20 @@ export default function Pet() {
     setUserId(newUserId);
     setPendingLogin(null);
     setLoginModalOpen(false);
+    setIsSwitching(false);
     showMessage("📥 Imported server data");
   };
 
   const handleLoginOverwriteServer = () => {
     if (!pendingLogin) return;
-    setUserId(pendingLogin.username);
+    const newUserId = pendingLogin.username;
+    const localState = pendingLogin.localData;
+    saveState(localState, petType, newUserId);
+    setState(localState);
+    setUserId(newUserId);
     setPendingLogin(null);
     setLoginModalOpen(false);
+    setIsSwitching(false);
     showMessage("☁️ Local data will be synced to server");
   };
 
@@ -411,7 +418,7 @@ export default function Pet() {
       <SyncConflictModal
         conflict={{
           petType,
-          localState: state,
+          localState: pendingLogin.localData,
           cloudState: pendingLogin.serverData!,
           localTimestamp: Math.floor(Date.now() / 1000),
           cloudTimestamp: Math.floor(Date.now() / 1000),
