@@ -169,26 +169,42 @@ export default function Pet() {
     authService.setCurrentUser(username);
     try {
       const cloudData = await syncService.getCloudData(petType, username);
-      if (cloudData && cloudData.state) {
+      console.log(`[Login] Checking server data for ${username}:`, cloudData);
+
+      if (cloudData?.state) {
         const cloudState = cloudData.state;
         const localState = state;
+
+        console.log(`[Login] Local state:`, localState);
+        console.log(`[Login] Server state:`, cloudState);
+
+        // Check if data differs (server has different data than local)
         const dataMatches =
           cloudState.xp === localState.xp &&
           cloudState.hunger === localState.hunger &&
           cloudState.happiness === localState.happiness &&
           cloudState.energy === localState.energy &&
           cloudState.name === localState.name &&
-          cloudState.stage === localState.stage;
+          cloudState.stage === localState.stage &&
+          cloudState.interactions === localState.interactions;
 
+        console.log(`[Login] Data matches:`, dataMatches);
+
+        // Always show conflict if data differs (server has any data at all)
         if (!dataMatches) {
+          console.log(
+            `[Login] Conflict detected: showing modal for conflict resolution`
+          );
           setPendingLogin({ username, serverData: cloudState });
           return;
         }
       }
+
+      console.log(`[Login] No conflict: proceeding with login`);
       setUserId(username);
       setLoginModalOpen(false);
     } catch (error) {
-      console.error("Error checking server data:", error);
+      console.error("[Login] Error checking server data:", error);
       setUserId(username);
       setLoginModalOpen(false);
     }
