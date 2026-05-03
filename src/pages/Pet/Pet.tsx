@@ -179,6 +179,10 @@ export default function Pet() {
     const enabled = event.currentTarget.checked;
     setAutosaveEnabled(enabled);
     syncService.setAutosaveEnabled(enabled);
+    // Clear pending login if autosave is turned off
+    if (!enabled && pendingLogin) {
+      setPendingLogin(null);
+    }
     showMessage(enabled ? "☁️ Autosave enabled" : "⚙️ Autosave disabled");
   };
 
@@ -401,7 +405,8 @@ export default function Pet() {
     return <LoginModal mode="initial" onLogin={handleLogin} />;
   }
 
-  if (pendingLogin) {
+  // Only show conflict modal if autosave is enabled
+  if (pendingLogin && syncService.isAutosaveEnabled()) {
     return (
       <SyncConflictModal
         conflict={{
@@ -416,6 +421,11 @@ export default function Pet() {
         onDownloadCloud={handleLoginImportServer}
       />
     );
+  }
+
+  // If autosave is disabled, clear any pending login and proceed
+  if (pendingLogin && !syncService.isAutosaveEnabled()) {
+    setPendingLogin(null);
   }
 
   return (
