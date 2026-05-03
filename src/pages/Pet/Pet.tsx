@@ -46,6 +46,10 @@ export default function Pet() {
     authService.getCurrentUser()
   );
   const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const [pendingLogin, setPendingLogin] = useState<{
+    username: string;
+    serverData: PetState | null;
+  } | null>(null);
 
   const [petType, setPetType] = useState<PetType>(() => {
     return (localStorage.getItem("active_pet") as PetType) || "dragon";
@@ -159,6 +163,57 @@ export default function Pet() {
     setAutosaveEnabled(enabled);
     syncService.setAutosaveEnabled(enabled);
     showMessage(enabled ? "☁️ Autosave enabled" : "⚙️ Autosave disabled");
+  };
+
+  const handleLogin = async (username: string) => {
+    authService.setCurrentUser(username);
+    try {
+      const cloudData = await syncService.getCloudData(petType, username);
+      if (cloudData && cloudData.state) {
+        const cloudState = cloudData.state;
+        const localState = state;
+        const dataMatches =
+          cloudState.xp === localState.xp &&
+          cloudState.hunger === localState.hunger &&
+          cloudState.happiness === localState.happiness &&
+          cloudState.energy === localState.energy &&
+          cloudState.name === localState.name &&
+          cloudState.stage === localState.stage;
+
+        if (!dataMatches) {
+          setPendingLogin({ username, serverData: cloudState });
+          return;
+        }
+      }
+      setUserId(username);
+      setLoginModalOpen(false);
+    } catch (error) {
+      console.error("Error checking server data:", error);
+      setUserId(username);
+      setLoginModalOpen(false);
+    }
+  };
+
+  const handleLoginImportServer = () => {
+    if (!pendingLogin) return;
+    const cloudState = pendingLogin.serverData;
+    if (cloudState) {
+      applyDecay(cloudState);
+      saveState(cloudState, petType);
+      setState(cloudState);
+    }
+    setUserId(pendingLogin.username);
+    setPendingLogin(null);
+    setLoginModalOpen(false);
+    showMessage("📥 Imported server data");
+  };
+
+  const handleLoginOverwriteServer = () => {
+    if (!pendingLogin) return;
+    setUserId(pendingLogin.username);
+    setPendingLogin(null);
+    setLoginModalOpen(false);
+    showMessage("☁️ Local data will be synced to server");
   };
 
   // Derive cooldowns from state (no separate interval needed)
@@ -296,8 +351,25 @@ export default function Pet() {
     xpDisplay = `${state.xp} xp ⭐ MAXED!`;
   }
 
-  if (userId === null) {
-    return <LoginModal mode="initial" onLogin={(u) => setUserId(u)} />;
+  if (userId === null && !pendingLogin) {
+    return <LoginModal mode="initial" onLogin={handleLogin} />;
+  }
+
+  if (pendingLogin) {
+    return (
+      <SyncConflictModal
+        conflict={{
+          petType,
+          localState: state,
+          cloudState: pendingLogin.serverData!,
+          localTimestamp: Math.floor(Date.now() / 1000),
+          cloudTimestamp: Math.floor(Date.now() / 1000),
+        }}
+        loading={false}
+        onKeepLocal={handleLoginOverwriteServer}
+        onDownloadCloud={handleLoginImportServer}
+      />
+    );
   }
 
   return (
@@ -571,10 +643,7 @@ export default function Pet() {
       {loginModalOpen && (
         <LoginModal
           mode="switch"
-          onLogin={(u) => {
-            setUserId(u);
-            setLoginModalOpen(false);
-          }}
+          onLogin={handleLogin}
           onClose={() => setLoginModalOpen(false)}
         />
       )}

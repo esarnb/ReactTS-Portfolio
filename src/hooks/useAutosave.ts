@@ -31,7 +31,7 @@ export function useAutosave({
 
   // Sync when state changes significantly (after user action)
   useEffect(() => {
-    if (!syncService.isAutosaveEnabled()) {
+    if (!syncService.isAutosaveEnabled() || !userId) {
       return;
     }
 
@@ -90,7 +90,7 @@ export function useAutosave({
 
   // Periodic sync every 60 seconds if autosave is enabled
   useEffect(() => {
-    if (!syncService.isAutosaveEnabled()) {
+    if (!syncService.isAutosaveEnabled() || !userId) {
       return;
     }
 
