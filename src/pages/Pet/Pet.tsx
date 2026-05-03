@@ -189,12 +189,13 @@ export default function Pet() {
         console.log(`[Login] Local state:`, localState);
         console.log(`[Login] Server state:`, cloudState);
 
-        // Check if data differs (server has different data than local)
+        // Check if data differs (use tolerance for float comparisons due to decay)
+        const tolerance = 1; // Allow 1 point difference for hunger/happiness/energy
         const dataMatches =
           cloudState.xp === localState.xp &&
-          cloudState.hunger === localState.hunger &&
-          cloudState.happiness === localState.happiness &&
-          cloudState.energy === localState.energy &&
+          Math.abs(cloudState.hunger - localState.hunger) < tolerance &&
+          Math.abs(cloudState.happiness - localState.happiness) < tolerance &&
+          Math.abs(cloudState.energy - localState.energy) < tolerance &&
           cloudState.name === localState.name &&
           cloudState.stage === localState.stage &&
           cloudState.interactions === localState.interactions;
