@@ -50,6 +50,7 @@ export default function Pet() {
     username: string;
     serverData: PetState | null;
   } | null>(null);
+  const [isSwitching, setIsSwitching] = useState(false);
 
   const [petType, setPetType] = useState<PetType>(() => {
     return (localStorage.getItem("active_pet") as PetType) || "dragon";
@@ -108,11 +109,16 @@ export default function Pet() {
       checkEvolution(s);
       saveState(s, petType, userId);
       setState(s);
+      setIsSwitching(false);
     }
   }, [userId]);
 
-  // Main game tick loop
+  // Main game tick loop (paused while switching accounts)
   useEffect(() => {
+    if (isSwitching) {
+      return; // Don't sync while switching accounts
+    }
+
     const interval = setInterval(() => {
       setState((prevState) => {
         const updated = { ...prevState };
@@ -124,7 +130,7 @@ export default function Pet() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [petType, userId]);
+  }, [petType, userId, isSwitching]);
 
   const handleSwitchPet = (newType: PetType) => {
     saveState(state, petType);
@@ -420,7 +426,10 @@ export default function Pet() {
             <Button
               size="xs"
               variant="subtle"
-              onClick={() => setLoginModalOpen(true)}
+              onClick={() => {
+                setIsSwitching(true);
+                setLoginModalOpen(true);
+              }}
             >
               Switch
             </Button>
