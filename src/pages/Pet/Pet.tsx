@@ -27,8 +27,10 @@ import {
 } from "../../components/Pet/PetState";
 import { PetDisplay } from "../../components/Pet/PetDisplay";
 import { SyncConflictModal } from "../../components/Pet/SyncConflictModal";
+import { LoginModal } from "../../components/Pet/LoginModal";
 import { useAutosave } from "../../hooks/useAutosave";
 import { syncService, SyncConflict } from "../../services/syncService";
+import { authService } from "../../services/authService";
 import "./Pet.css";
 
 const MOOD_EMOJI: Record<string, string> = {
@@ -40,14 +42,10 @@ const MOOD_EMOJI: Record<string, string> = {
 };
 
 export default function Pet() {
-  const [userId] = useState(() => {
-    let id = localStorage.getItem("pet_user_id");
-    if (!id) {
-      id = "user_" + Math.random().toString(36).substr(2, 9);
-      localStorage.setItem("pet_user_id", id);
-    }
-    return id;
-  });
+  const [userId, setUserId] = useState<string | null>(() =>
+    authService.getCurrentUser()
+  );
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
 
   const [petType, setPetType] = useState<PetType>(() => {
     return (localStorage.getItem("active_pet") as PetType) || "dragon";
@@ -298,17 +296,33 @@ export default function Pet() {
     xpDisplay = `${state.xp} xp ⭐ MAXED!`;
   }
 
+  if (userId === null) {
+    return <LoginModal mode="initial" onLogin={(u) => setUserId(u)} />;
+  }
+
   return (
     <div className="pet-container">
       <Stack gap="md" align="center">
-        {/* Autosave Toggle */}
-        <Group justify="center">
+        {/* Autosave Toggle and Account Switcher */}
+        <Group justify="center" gap="md">
           <Switch
             label="Cloud Sync"
             checked={autosaveEnabled}
             onChange={handleAutosaveToggle}
             size="sm"
           />
+          <Group gap="xs">
+            <Text size="sm" c="dimmed">
+              👤 {userId}
+            </Text>
+            <Button
+              size="xs"
+              variant="subtle"
+              onClick={() => setLoginModalOpen(true)}
+            >
+              Switch
+            </Button>
+          </Group>
         </Group>
 
         {/* Pet Switcher */}
@@ -552,6 +566,18 @@ export default function Pet() {
         onKeepLocal={handleKeepLocal}
         onDownloadCloud={handleDownloadCloud}
       />
+
+      {/* Switch Account Modal */}
+      {loginModalOpen && (
+        <LoginModal
+          mode="switch"
+          onLogin={(u) => {
+            setUserId(u);
+            setLoginModalOpen(false);
+          }}
+          onClose={() => setLoginModalOpen(false)}
+        />
+      )}
     </div>
   );
 }
