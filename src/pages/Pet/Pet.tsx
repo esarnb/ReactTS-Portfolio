@@ -40,6 +40,15 @@ const MOOD_EMOJI: Record<string, string> = {
 };
 
 export default function Pet() {
+  const [userId] = useState(() => {
+    let id = localStorage.getItem("pet_user_id");
+    if (!id) {
+      id = "user_" + Math.random().toString(36).substr(2, 9);
+      localStorage.setItem("pet_user_id", id);
+    }
+    return id;
+  });
+
   const [petType, setPetType] = useState<PetType>(() => {
     return (localStorage.getItem("active_pet") as PetType) || "dragon";
   });
@@ -76,6 +85,7 @@ export default function Pet() {
 
   // Autosave hook
   useAutosave({
+    userId,
     petType,
     state,
     onConflict: setSyncConflict,
@@ -120,6 +130,7 @@ export default function Pet() {
     setSyncLoading(true);
     try {
       await syncService.forceSyncPet({
+        userId,
         petType: syncConflict.petType,
         state: syncConflict.localState,
         lastUpdatedUnix: syncConflict.localTimestamp + 1,

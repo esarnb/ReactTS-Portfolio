@@ -3,6 +3,7 @@ import { PetState, PetType } from "../components/Pet/PetState";
 const API_BASE = "https://api.esarnb.com/api";
 
 export interface SyncPayload {
+  userId: string;
   petType: PetType;
   state: PetState;
   lastUpdatedUnix: number;
@@ -120,12 +121,12 @@ export const syncService = {
   /**
    * Get the latest data from the server for a pet type
    */
-  async getCloudData(petType: PetType): Promise<{ state: PetState; timestamp: number } | null> {
+  async getCloudData(petType: PetType, userId: string): Promise<{ state: PetState; timestamp: number } | null> {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000);
 
     try {
-      const response = await fetch(`${API_BASE}/sync/${petType}`, {
+      const response = await fetch(`${API_BASE}/sync/${petType}?userId=${encodeURIComponent(userId)}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         signal: controller.signal,

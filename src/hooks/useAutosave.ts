@@ -3,6 +3,7 @@ import { PetState, PetType } from "../components/Pet/PetState";
 import { syncService, SyncConflict } from "../services/syncService";
 
 interface UseAutosaveProps {
+  userId: string;
   petType: PetType;
   state: PetState;
   onConflict: (conflict: SyncConflict) => void;
@@ -18,6 +19,7 @@ interface UseAutosaveProps {
  * - Triggers conflict modal on 409 response
  */
 export function useAutosave({
+  userId,
   petType,
   state,
   onConflict,
@@ -62,6 +64,7 @@ export function useAutosave({
 
       try {
         const payload = {
+          userId,
           petType,
           state,
           lastUpdatedUnix: Math.floor(Date.now() / 1000),
@@ -83,7 +86,7 @@ export function useAutosave({
     };
 
     performSync();
-  }, [state, petType, onConflict, onSyncSuccess, onSyncError]);
+  }, [userId, state, petType, onConflict, onSyncSuccess, onSyncError]);
 
   // Periodic sync every 60 seconds if autosave is enabled
   useEffect(() => {
@@ -102,6 +105,7 @@ export function useAutosave({
         // Only sync if it's been more than 60 seconds since last sync
         if (now - lastSync >= 60) {
           const payload = {
+            userId,
             petType,
             state,
             lastUpdatedUnix: now,
@@ -123,5 +127,5 @@ export function useAutosave({
     }, 60000); // Every 60 seconds
 
     return () => clearInterval(interval);
-  }, [petType, state, onConflict, onSyncSuccess, onSyncError]);
+  }, [userId, petType, state, onConflict, onSyncSuccess, onSyncError]);
 }
