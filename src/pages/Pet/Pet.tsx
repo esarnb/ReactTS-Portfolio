@@ -184,7 +184,8 @@ export default function Pet() {
 
       if (cloudData?.state) {
         const cloudState = cloudData.state;
-        const localState = state;
+        // Load fresh local state for this username, don't use current component state
+        const localState = loadState(petType, username);
 
         console.log(`[Login] Local state:`, localState);
         console.log(`[Login] Server state:`, cloudState);
