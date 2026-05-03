@@ -184,6 +184,7 @@ export default function Pet() {
 
   const handleLogin = async (username: string) => {
     authService.setCurrentUser(username);
+    setPendingLogin(null);  // Clear any pending login from previous switch
 
     // If autosave is disabled, don't check server
     if (!syncService.isAutosaveEnabled()) {
