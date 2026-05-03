@@ -224,12 +224,13 @@ export default function Pet() {
   const handleLoginImportServer = () => {
     if (!pendingLogin) return;
     const cloudState = pendingLogin.serverData;
+    const newUserId = pendingLogin.username;
     if (cloudState) {
       applyDecay(cloudState);
-      saveState(cloudState, petType);
+      saveState(cloudState, petType, newUserId);
       setState(cloudState);
     }
-    setUserId(pendingLogin.username);
+    setUserId(newUserId);
     setPendingLogin(null);
     setLoginModalOpen(false);
     showMessage("📥 Imported server data");
