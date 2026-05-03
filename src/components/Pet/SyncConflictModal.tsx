@@ -74,7 +74,7 @@ export function SyncConflictModal({
       centered
       closeButtonProps={{ disabled: loading }}
     >
-      <Stack spacing="md">
+      <Stack gap="md">
         <Text size="sm" c="dimmed">
           Your pet data differs on this device and the cloud. Which version would you like to keep?
         </Text>

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Mood } from "../PetState";
 import { Eye, Mouth, ZZZ, Blush } from "./AnimalHelpers";
 

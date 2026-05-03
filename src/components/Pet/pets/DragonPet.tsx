@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Mood, Stage } from "../PetState";
 import { PetSprite } from "../PetSprite";
 

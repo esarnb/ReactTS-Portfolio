@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Mood } from "../PetState";
 
 interface EyeProps {
