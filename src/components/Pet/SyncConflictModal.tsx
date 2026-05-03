@@ -8,6 +8,7 @@ interface SyncConflictModalProps {
   loading?: boolean;
   onKeepLocal: () => Promise<void>;
   onDownloadCloud: () => void;
+  onUseHigherXP?: () => Promise<void>;
 }
 
 export function SyncConflictModal({
@@ -15,8 +16,13 @@ export function SyncConflictModal({
   loading = false,
   onKeepLocal,
   onDownloadCloud,
+  onUseHigherXP,
 }: SyncConflictModalProps) {
   if (!conflict) return null;
+
+  const xpDiffers = conflict.localState.xp !== conflict.cloudState.xp;
+  const localXpHigher = conflict.localState.xp > conflict.cloudState.xp;
+  const higherXpVersion = localXpHigher ? "local" : "cloud";
 
   const getTimestampDisplay = (timestamp: number) => {
     const date = new Date(timestamp * 1000);
@@ -128,6 +134,18 @@ export function SyncConflictModal({
         </div>
 
         {/* Action Buttons */}
+        {xpDiffers && onUseHigherXP ? (
+          <Group grow>
+            <Button
+              onClick={onUseHigherXP}
+              loading={loading}
+              color="cyan"
+              leftSection="⭐"
+            >
+              Use Higher XP ({higherXpVersion === "local" ? conflict.localState.xp : conflict.cloudState.xp})
+            </Button>
+          </Group>
+        ) : null}
         <Group grow>
           <Button
             variant="default"

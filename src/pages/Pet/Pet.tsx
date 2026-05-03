@@ -73,7 +73,22 @@ export default function Pet() {
   const [autosaveEnabled, setAutosaveEnabled] = useState(() =>
     syncService.isAutosaveEnabled()
   );
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
   const messageTimeoutRef = useRef<NodeJS.Timeout>();
+
+  // Monitor internet connection status
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
 
   const getStatColor = (value: number) => {
     if (value >= 70) return "green";
@@ -133,6 +148,53 @@ export default function Pet() {
     return () => clearInterval(interval);
   }, [petType, userId, isSwitching]);
 
+  // Runtime XP conflict checker (every 30 seconds if autosave is enabled)
+  useEffect(() => {
+    if (!autosaveEnabled || !userId || isSwitching) {
+      return; // Only check if autosave is enabled
+    }
+
+    const checkInterval = setInterval(async () => {
+      try {
+        const cloudData = await syncService.getCloudData(petType, userId);
+        if (!cloudData) return;
+
+        setState((prevState) => {
+          const cloudXp = cloudData.state.xp;
+          const localXp = prevState.xp;
+
+          // If cloud XP is greater, auto-update
+          if (cloudXp > localXp) {
+            console.log(`[XP Check] Cloud XP (${cloudXp}) > Local XP (${localXp}), auto-updating`);
+            applyDecay(cloudData.state);
+            saveState(cloudData.state, petType, userId);
+            showMessage(`📥 Cloud data updated (+${cloudXp - localXp} XP)`);
+            return cloudData.state;
+          }
+
+          // If cloud XP is less, ask user
+          if (cloudXp < localXp) {
+            console.log(`[XP Check] Cloud XP (${cloudXp}) < Local XP (${localXp}), showing conflict`);
+            setSyncConflict({
+              petType,
+              localState: prevState,
+              cloudState: cloudData.state,
+              localTimestamp: Math.floor(Date.now() / 1000),
+              cloudTimestamp: cloudData.timestamp,
+            });
+          }
+
+          return prevState;
+        });
+      } catch (error) {
+        console.error("Error checking server XP:", error);
+        // Silently fail - don't interrupt the game
+      }
+    }, 30000); // Check every 30 seconds
+
+    return () => clearInterval(checkInterval);
+  }, [autosaveEnabled, userId, petType, isSwitching]);
+
   const handleSwitchPet = (newType: PetType) => {
     saveState(state, petType);
     const newState = loadState(newType);
@@ -174,6 +236,40 @@ export default function Pet() {
     setState(syncConflict.cloudState);
     setSyncConflict(null);
     showMessage("📥 Cloud data loaded");
+  };
+
+  const handleUseHigherXP = async () => {
+    if (!syncConflict) return;
+    setSyncLoading(true);
+    try {
+      const localXpHigher = syncConflict.localState.xp > syncConflict.cloudState.xp;
+      const selectedState = localXpHigher ? syncConflict.localState : syncConflict.cloudState;
+      const higherXp = Math.max(syncConflict.localState.xp, syncConflict.cloudState.xp);
+
+      applyDecay(selectedState);
+      saveState(selectedState, syncConflict.petType);
+      setState(selectedState);
+
+      // Force sync the version with higher XP to server
+      if (!userId) {
+        showMessage(`⭐ Using version with ${higherXp} XP`);
+      } else {
+        await syncService.forceSyncPet({
+          userId,
+          petType: syncConflict.petType,
+          state: selectedState,
+          lastUpdatedUnix: Math.floor(Date.now() / 1000),
+          force: true,
+        });
+        showMessage(`⭐ Using version with ${higherXp} XP - synced to cloud`);
+      }
+      setSyncConflict(null);
+    } catch (error) {
+      console.error("Failed to use higher XP:", error);
+      showMessage("❌ Failed to sync higher XP version");
+    } finally {
+      setSyncLoading(false);
+    }
   };
 
   const handleAutosaveToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -360,9 +456,10 @@ export default function Pet() {
     }
     setState((prev) => {
       const updated = { ...prev };
-      applyAction(updated, "sleep");
+      const result = applyAction(updated, "sleep");
       saveState(updated, petType);
-      showMessage(`😴 ${updated.name} is now sleeping`);
+      const energyGain = Math.floor(result.energy_after! - result.energy_before!);
+      showMessage(`😴 ${updated.name} is now sleeping +${energyGain} energy`);
       return updated;
     });
   };
@@ -426,6 +523,19 @@ export default function Pet() {
         loading={false}
         onKeepLocal={handleLoginOverwriteServer}
         onDownloadCloud={handleLoginImportServer}
+        onUseHigherXP={async () => {
+          if (!pendingLogin.serverData) return;
+          const localXpHigher = pendingLogin.localData.xp > pendingLogin.serverData.xp;
+          const selectedState = localXpHigher ? pendingLogin.localData : pendingLogin.serverData;
+          applyDecay(selectedState);
+          saveState(selectedState, petType, pendingLogin.username);
+          setState(selectedState);
+          setUserId(pendingLogin.username);
+          setPendingLogin(null);
+          setLoginModalOpen(false);
+          setIsSwitching(false);
+          showMessage(`⭐ Loaded version with ${Math.max(pendingLogin.localData.xp, pendingLogin.serverData.xp)} XP`);
+        }}
       />
     );
   }
@@ -440,12 +550,30 @@ export default function Pet() {
       <Stack gap="md" align="center">
         {/* Autosave Toggle and Account Switcher */}
         <Group justify="center" gap="md">
-          <Switch
-            label="Cloud Sync"
-            checked={autosaveEnabled}
-            onChange={handleAutosaveToggle}
-            size="sm"
-          />
+          <Group gap="xs">
+            <Switch
+              label="Cloud Sync"
+              checked={autosaveEnabled}
+              onChange={handleAutosaveToggle}
+              size="sm"
+            />
+            <Badge
+              color={isOnline ? "green" : "red"}
+              variant="dot"
+              size="sm"
+              title={
+                autosaveEnabled
+                  ? isOnline
+                    ? "Connected to internet"
+                    : "No internet connection"
+                  : isOnline
+                  ? "Connected to internet (Cloud Sync disabled)"
+                  : "No internet connection (Cloud Sync disabled)"
+              }
+            >
+              {autosaveEnabled ? (isOnline ? "Online" : "Offline") : "Sync Off"}
+            </Badge>
+          </Group>
           <Group gap="xs">
             <Text size="sm" c="dimmed">
               👤 {userId}
@@ -703,6 +831,7 @@ export default function Pet() {
         loading={syncLoading}
         onKeepLocal={handleKeepLocal}
         onDownloadCloud={handleDownloadCloud}
+        onUseHigherXP={handleUseHigherXP}
       />
 
       {/* Switch Account Modal */}

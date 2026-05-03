@@ -136,7 +136,7 @@ export function applyDecay(state: PetState): PetState {
   const sleeping = state.mood === "sleeping";
 
   if (sleeping) {
-    state.energy = Math.min(100, state.energy + (elapsed * 16) / 3600);
+    state.energy = Math.min(100, state.energy + (elapsed * 50) / 3600);
     if (state.energy >= 100) {
       state.energy = 100;
     }
@@ -219,9 +219,13 @@ export function applyAction(state: PetState, action: string, name?: string): Act
     state.last_played = now;
     state.interactions += 1;
   } else if (action === "sleep") {
+    result.energy_before = state.energy;
     state.mood = "sleeping";
+    state.energy = Math.min(100, state.energy + 10);
+    state.xp += 1;
     state.last_slept = now;
     state.interactions += 1;
+    result.energy_after = state.energy;
   } else if (action === "wake") {
     state.mood = deriveMoodFromStats(state);
     state.last_wake = now;
