@@ -156,7 +156,8 @@ export default function Pet() {
     showMessage("📥 Cloud data loaded");
   };
 
-  const handleAutosaveToggle = (enabled: boolean) => {
+  const handleAutosaveToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const enabled = event.currentTarget.checked;
     setAutosaveEnabled(enabled);
     syncService.setAutosaveEnabled(enabled);
     showMessage(enabled ? "☁️ Autosave enabled" : "⚙️ Autosave disabled");
