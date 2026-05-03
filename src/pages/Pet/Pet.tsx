@@ -184,6 +184,15 @@ export default function Pet() {
 
   const handleLogin = async (username: string) => {
     authService.setCurrentUser(username);
+
+    // If autosave is disabled, don't check server
+    if (!syncService.isAutosaveEnabled()) {
+      console.log(`[Login] Autosave disabled, skipping server check for ${username}`);
+      setUserId(username);
+      setLoginModalOpen(false);
+      return;
+    }
+
     try {
       const cloudData = await syncService.getCloudData(petType, username);
       console.log(`[Login] Checking server data for ${username}:`, cloudData);
