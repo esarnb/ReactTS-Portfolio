@@ -7,6 +7,7 @@ import {
   Group,
   Text,
   Divider,
+  ActionIcon,
 } from "@mantine/core";
 import { authService } from "../../services/authService";
 
@@ -51,6 +52,12 @@ export function LoginModal({ mode, onLogin, onClose }: LoginModalProps) {
     onLogin(username);
   };
 
+  const handleDeleteAccount = (username: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    authService.removeAccount(username);
+    setSavedAccounts(authService.getSavedAccounts());
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
       handleSubmit();
@@ -90,18 +97,43 @@ export function LoginModal({ mode, onLogin, onClose }: LoginModalProps) {
 
             <Stack gap="xs">
               {savedAccounts.map((account) => (
-                <Button
+                <Group
                   key={account.username}
-                  variant="subtle"
-                  onClick={() => handleSelectSaved(account.username)}
-                  fullWidth
+                  gap="md"
                   justify="space-between"
+                  p="xs"
+                  style={{
+                    border: "1px solid var(--mantine-color-gray-2)",
+                    borderRadius: "var(--mantine-radius-sm)",
+                    cursor: "pointer",
+                    transition: "background-color 150ms ease",
+                  }}
+                  onClick={() => handleSelectSaved(account.username)}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor =
+                      "var(--mantine-color-gray-0)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                  }}
                 >
                   <Text>{account.username}</Text>
-                  <Text size="xs" c="dimmed">
-                    {formatLastLogin(account.lastLogin)}
-                  </Text>
-                </Button>
+                  <Group gap="xs">
+                    <Text size="xs" c="dimmed">
+                      {formatLastLogin(account.lastLogin)}
+                    </Text>
+                    <ActionIcon
+                      size="xs"
+                      color="red"
+                      variant="subtle"
+                      onClick={(e) =>
+                        handleDeleteAccount(account.username, e)
+                      }
+                    >
+                      ✕
+                    </ActionIcon>
+                  </Group>
+                </Group>
               ))}
             </Stack>
           </>
