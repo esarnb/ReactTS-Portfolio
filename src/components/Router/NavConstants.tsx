@@ -3,6 +3,7 @@ import CodeHighlightExample from '../CodeHighlightExample/CodeHighlightExample'
 import MC from '../../pages/MC/MC'
 import Prints from '../../pages/Prints/Prints';
 import Home from "../../pages/Home/Home";
+import Pet from "../../pages/Pet/Pet";
 
 const pages = [
     {
@@ -47,6 +48,13 @@ const pages = [
         icon: null,
         description: null
         // description: "Printed Models from 3D Printer"
+    },
+    {
+        path: '/pet',
+        element: <Pet />,
+        label: "Pet",
+        icon: null,
+        description: null
     }
 ];
 
