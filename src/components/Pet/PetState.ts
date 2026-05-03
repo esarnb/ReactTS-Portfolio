@@ -62,8 +62,8 @@ export const COOLDOWNS: Record<string, number> = {
   wake: 10,
 };
 
-function getStorageKey(petType: PetType): string {
-  return `pet_state_${petType}`;
+function getStorageKey(petType: PetType, userId?: string): string {
+  return userId ? `pet_state_${userId}_${petType}` : `pet_state_${petType}`;
 }
 
 export function defaultState(): PetState {
@@ -87,9 +87,9 @@ export function defaultState(): PetState {
   };
 }
 
-export function loadState(petType: PetType): PetState {
+export function loadState(petType: PetType, userId?: string): PetState {
   try {
-    const key = getStorageKey(petType);
+    const key = getStorageKey(petType, userId);
     const stored = localStorage.getItem(key);
     if (stored) {
       return JSON.parse(stored);
@@ -100,7 +100,7 @@ export function loadState(petType: PetType): PetState {
         const state = JSON.parse(oldStored);
         if (!state.last_slept) state.last_slept = state.created_at;
         if (!state.last_wake) state.last_wake = state.created_at;
-        saveState(state, petType);
+        saveState(state, petType, userId);
         localStorage.removeItem("pet_state");
         return state;
       }
@@ -111,9 +111,9 @@ export function loadState(petType: PetType): PetState {
   return defaultState();
 }
 
-export function saveState(state: PetState, petType: PetType): void {
+export function saveState(state: PetState, petType: PetType, userId?: string): void {
   try {
-    const key = getStorageKey(petType);
+    const key = getStorageKey(petType, userId);
     localStorage.setItem(key, JSON.stringify(state));
   } catch (e) {
     console.error("Failed to save state:", e);

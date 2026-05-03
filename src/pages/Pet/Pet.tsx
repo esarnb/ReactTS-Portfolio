@@ -56,10 +56,10 @@ export default function Pet() {
   });
 
   const [state, setState] = useState<PetState>(() => {
-    const s = loadState(petType);
+    const s = loadState(petType, userId);
     applyDecay(s);
     checkEvolution(s);
-    saveState(s, petType);
+    saveState(s, petType, userId);
     return s;
   });
 
@@ -100,6 +100,17 @@ export default function Pet() {
     },
   });
 
+  // Load pet state when userId changes (account switch)
+  useEffect(() => {
+    if (userId) {
+      const s = loadState(petType, userId);
+      applyDecay(s);
+      checkEvolution(s);
+      saveState(s, petType, userId);
+      setState(s);
+    }
+  }, [userId]);
+
   // Main game tick loop
   useEffect(() => {
     const interval = setInterval(() => {
@@ -107,13 +118,13 @@ export default function Pet() {
         const updated = { ...prevState };
         applyDecay(updated);
         checkEvolution(updated);
-        saveState(updated, petType);
+        saveState(updated, petType, userId);
         return updated;
       });
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [petType]);
+  }, [petType, userId]);
 
   const handleSwitchPet = (newType: PetType) => {
     saveState(state, petType);
