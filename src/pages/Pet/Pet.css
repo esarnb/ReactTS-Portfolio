@@ -1,0 +1,224 @@
+.pet-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.pet-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.pet-switch-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  font-size: 0.75rem;
+  color: inherit;
+}
+
+.pet-switch-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.pet-switch-btn.active {
+  border-color: var(--mantine-color-cyan-5);
+  background: rgba(0, 200, 255, 0.08);
+}
+
+.pet-switch-emoji {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.pet-switch-name {
+  font-size: 0.65rem;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+.pet-sprite-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.pet-header {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.pet-stats {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pet-xp {
+  text-align: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  width: 100%;
+}
+
+.pet-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.pet-action-btn {
+  min-width: 80px;
+  height: auto;
+  padding: 8px 12px;
+}
+
+.pet-timestamps {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.pet-message {
+  padding: 12px;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 6px;
+  text-align: center;
+  width: 100%;
+  margin: 10px 0;
+}
+
+@keyframes pet-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pet-bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+}
+
+@keyframes pet-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.97);
+  }
+}
+
+@keyframes pet-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes pet-sad {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.pet-anim-idle {
+  animation: pet-bob 2.5s ease-in-out infinite;
+}
+
+.pet-anim-happy {
+  animation: pet-bounce 0.8s ease-in-out infinite;
+}
+
+.pet-anim-sleeping {
+  animation: pet-breathe 3s ease-in-out infinite;
+}
+
+.pet-anim-hungry {
+  animation: pet-shake 1.2s ease-in-out infinite;
+}
+
+.pet-anim-sad {
+  animation: pet-sad 3.5s ease-in-out infinite;
+}
+
+@media (max-width: 480px) {
+  .pet-container {
+    padding: 10px;
+  }
+
+  .pet-actions {
+    gap: 6px;
+  }
+
+  .pet-actions button {
+    min-width: 70px;
+    font-size: 0.85rem;
+  }
+
+  .stat-row {
+    gap: 8px;
+  }
+
+  .pet-switcher {
+    gap: 4px;
+  }
+
+  .pet-switch-btn {
+    padding: 4px 8px;
+  }
+
+  .pet-switch-emoji {
+    font-size: 1.25rem;
+  }
+
+  .pet-switch-name {
+    font-size: 0.6rem;
+  }
+}
